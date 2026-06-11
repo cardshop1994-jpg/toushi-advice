@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>かんたん投資アドバイス</title>
+<style>
+  body{font-family:"Meiryo","Hiragino Kaku Gothic ProN",sans-serif;background:#f4f7fa;color:#222;margin:0;padding:0 14px 40px;}
+  .wrap{max-width:780px;margin:0 auto;}
+  h1{text-align:center;color:#1f3a5f;font-size:23px;margin:22px 0 4px;}
+  .date{text-align:center;color:#777;font-size:13px;margin-bottom:16px;}
+  h2{color:#1f3a5f;border-bottom:3px solid #2e75b6;padding-bottom:6px;margin-top:28px;font-size:18px;}
+  .golden{background:#eaf4ff;border-left:5px solid #2e75b6;padding:13px 15px;border-radius:8px;margin:14px 0;font-size:14px;line-height:1.7;}
+  .cards{display:flex;flex-wrap:wrap;gap:14px;}
+  .card{flex:1 1 230px;background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,.08);}
+  .card h3{font-size:15px;margin:0 0 8px;color:#333;}
+  .tk{color:#999;font-size:12px;}
+  .price{font-size:24px;font-weight:bold;color:#1f3a5f;}
+  .dd{font-size:18px;font-weight:bold;margin:6px 0 2px;}
+  .badge{display:inline-block;color:#fff;border-radius:20px;padding:4px 14px;font-size:14px;font-weight:bold;margin:6px 0;}
+  .advice{font-size:14px;margin:6px 0;line-height:1.6;}
+  .sub{font-size:12px;color:#777;margin:4px 0;line-height:1.6;}
+  .yield{font-size:13px;color:#1d7a3a;font-weight:bold;margin:4px 0;}
+  table{width:100%;border-collapse:collapse;margin:10px 0;background:#fff;}
+  th,td{border:1px solid #e0e6ec;padding:9px;font-size:13px;text-align:left;}
+  th{background:#1f3a5f;color:#fff;}
+  td.num{text-align:center;}
+  td.buy{font-weight:bold;color:#2e9e4f;text-align:center;}
+  .hform{background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,.08);margin-bottom:14px;}
+  .hform label{display:block;font-size:14px;margin:8px 0;}
+  .hform input{width:100%;box-sizing:border-box;padding:12px;font-size:18px;border:1px solid #ccd;border-radius:8px;margin-top:4px;}
+  .hform button{width:100%;padding:14px;font-size:17px;font-weight:bold;color:#fff;background:#2e75b6;border:none;border-radius:8px;margin-top:12px;}
+  .step{background:#fff;border-radius:12px;padding:16px 20px;box-shadow:0 2px 6px rgba(0,0,0,.08);font-size:14px;line-height:1.9;}
+  .legend td:first-child{font-weight:bold;white-space:nowrap;}
+  .dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:middle;}
+  .foot{font-size:11px;color:#999;margin-top:24px;line-height:1.6;}
+  .err{color:#c0392b;font-size:13px;}
+  #reb-result{display:none;}
+</style>
+</head>
+<body><div class="wrap">
+  <h1>かんたん投資アドバイス</h1>
+  <div class="date" id="updated">読み込み中 ...</div>
+
+  <div class="golden">📌 <b>いちばん大事なこと：</b>株価が上がっても下がっても、「毎月決めた額（2万円）を買い続ける」のが、いちばん勝ちやすい方法です。下の判定は<b>「買い増しのタイミングの参考」</b>です。<b>高いときに余分に買わないため</b>の目印として使ってください。</div>
+
+  <h2>① いまの値段は高い？安い？（1年の高値とくらべて）</h2>
+  <div class="cards" id="cards"><p>価格データを読み込んでいます ...</p></div>
+
+  <h2>② 判定のルール（下落何％で「おすすめ」になるか）</h2>
+  <table class="legend">
+    <tr><th>1年の高値からの下落</th><th>判定</th><th>どうすればいい？</th></tr>
+    <tr><td><span class="dot" style="background:#d9892a"></span>0〜3%</td><td>高値圏</td><td>いまは高め。<b>買い増しはしない</b>。いつもの積立だけ</td></tr>
+    <tr><td><span class="dot" style="background:#3a7bbf"></span>3〜10%</td><td>ふつう</td><td>予定どおり毎月の積立でOK</td></tr>
+    <tr><td><span class="dot" style="background:#2e9e4f"></span>10〜20%</td><td><b>お買い得</b></td><td>高値より1割以上安い。<b>少し多めに買ってもよい時期</b></td></tr>
+    <tr><td><span class="dot" style="background:#1d7a3a"></span>20%以上</td><td><b>バーゲン</b></td><td>めったにない安さ。<b>余裕資金があれば買い増しチャンス</b></td></tr>
+  </table>
+  <p class="sub">💡 配当（分配金）が目的なら、<b>値段が下がったときに買うほど、同じお金で多くの口数が買え、利回りが上がります</b>。だから「高値圏で余分に買わない」ことが大切です。</p>
+
+  <h2>③ 今月の買い方（あなたの保有額から計算）</h2>
+  <div class="hform">
+    <p class="sub">今持っている金額（円）を入れて「計算」を押すと、毎月2万円の振り分けが出ます。入力はこの端末に保存されます。始めていなければ 0 のままでOK。</p>
+    <label>日経高配当50（1489） <input id="h1489" type="number" inputmode="numeric" value="0"></label>
+    <label>オルカン（2559） <input id="h2559" type="number" inputmode="numeric" value="0"></label>
+    <label>純金（1540） <input id="h1540" type="number" inputmode="numeric" value="0"></label>
+    <button onclick="calc()">計算する</button>
+  </div>
+  <div id="reb-result"></div>
+
+  <h2>④ はじめの一歩（初めての人へ）</h2>
+  <div class="step">
+    1. ネット証券（<b>SBI証券</b> か <b>楽天証券</b>）で口座を作る（<b>NISAも同時申込</b>）<br>
+    2. 利益が非課税になる<b>新NISA</b>で買う（これ大事）<br>
+    3. 毎月の自動積立を設定する。そのまま注文できる組み合わせ：<br>
+    　・<b>eMAXIS Slim 全世界株式（オール・カントリー）</b>…投資信託。毎月8,000円（2559と同じ中身。全自動OK）<br>
+    　・<b>純金ファンド（ファインゴールド等）</b>…投資信託。毎月4,000円（1540と同じ金。全自動OK）<br>
+    　・<b>日経高配当株50 ETF（1489）</b>…毎月8,000円分。月1回アプリで「1489」を検索して買う（5分）<br>
+    4. あとは<b>放置</b>。値動きを見て売らない。これが成功のコツ。
+  </div>
+
+  <p class="foot">※ 本サイトは情報提供であり、利益を保証するものではありません。投資は自己責任で。価格は1日1回（取引終了後）更新です。大きく下がっているときは「安い」と同時に「悪い材料が出ている」可能性もあります。一度に大金を入れず、積立ペースを守ってください。</p>
+</div>
+
+<script>
+const NAMES = {
+  "1489.T": ["日経高配当株50 ETF", "配当の柱", "1489"],
+  "2559.T": ["全世界株式 ETF・オルカン", "世界に分散", "2559"],
+  "1540.T": ["純金", "暴落のクッション", "1540"],
+};
+const TARGET = { "1489.T": 0.40, "2559.T": 0.40, "1540.T": 0.20 };
+const MONTHLY = 20000;
+
+function yen(x){ return Math.round(x).toLocaleString("ja-JP") + "円"; }
+
+function tier(dd, adjusted, days){
+  if (adjusted && days !== null && days < 6)
+    return ["判定おやすみ中", "#888888", "分割やデータ調整の直後のため判定を一時停止。いつもの金額でOK。"];
+  if (dd >= -3)  return ["高値圏", "#d9892a", "いまは高め。買い増しはせず、いつもの積立だけにしましょう。"];
+  if (dd >= -10) return ["ふつう", "#3a7bbf", "予定どおり毎月の積立でOK。"];
+  if (dd >= -20) return ["お買い得", "#2e9e4f", "高値より1割以上安い。少し多めに買ってもよい時期です。"];
+  return ["バーゲン", "#1d7a3a", "めったにない安さ。余裕資金があれば買い増しのチャンスです。"];
+}
+
+async function load(){
+  try{
+    const res = await fetch("data.json?t=" + Date.now());
+    const data = await res.json();
+    document.getElementById("updated").textContent = data.updated + " 更新（毎営業日の取引終了後に自動更新）";
+    let html = "";
+    for (const tk of Object.keys(NAMES)){
+      const a = data.assets[tk];
+      const [name, role, code] = NAMES[tk];
+      if (!a || !a.ok){
+        html += `<div class="card"><h3>${name}（${role}）</h3><p class="err">データを取得できませんでした</p></div>`;
+        continue;
+      }
+      const [label, color, msg] = tier(a.drawdown, a.adjusted, a.days_since_jump);
+      const yieldHtml = a.yield_pct !== null && a.yield_pct !== undefined
+        ? `<p class="yield">💰 いま買うと分配金利回り 約${a.yield_pct}%</p>` : "";
+      html += `
+      <div class="card">
+        <h3>${name}（${role}） <span class="tk">${code}</span></h3>
+        <div class="price">${yen(a.price)}</div>
+        <div class="dd" style="color:${color}">1年の高値から ${a.drawdown}%</div>
+        <div class="badge" style="background:${color}">${label}</div>
+        <p class="advice">${msg}</p>
+        ${yieldHtml}
+        <p class="sub">1年高値 ${yen(a.high1y)}
+        <a href="https://finance.yahoo.co.jp/quote/${tk}" target="_blank">チャートを見る</a>
+        証券アプリで「${code}」を検索</p>
+      </div>`;
+    }
+    document.getElementById("cards").innerHTML = html;
+  }catch(e){
+    document.getElementById("cards").innerHTML =
+      '<p class="err">データの読み込みに失敗しました。時間をおいて再読み込みしてください。</p>';
+  }
+}
+
+function calc(){
+  const h = {};
+  for (const code of ["1489","2559","1540"]){
+    const v = parseInt(document.getElementById("h"+code).value) || 0;
+    h[code + ".T"] = Math.max(0, v);
+    localStorage.setItem("h"+code, v);
+  }
+  const total = Object.values(h).reduce((a,b)=>a+b, 0);
+  const after = total + MONTHLY;
+  let need = {}, s = 0;
+  for (const tk in TARGET){
+    need[tk] = Math.max(0, after * TARGET[tk] - h[tk]);
+    s += need[tk];
+  }
+  const buy = {};
+  for (const tk in TARGET){
+    buy[tk] = s > 0 ? MONTHLY * need[tk] / s : MONTHLY * TARGET[tk];
+  }
+  let rows = "";
+  for (const tk in TARGET){
+    const pct = total > 0 ? (h[tk]/total*100).toFixed(0) + "%" : "—";
+    rows += `<tr><td>${NAMES[tk][0]}</td><td class="num">${pct}</td>
+      <td class="num">${Math.round(TARGET[tk]*100)}%</td>
+      <td class="buy">${yen(buy[tk])}</td></tr>`;
+  }
+  document.getElementById("reb-result").style.display = "block";
+  document.getElementById("reb-result").innerHTML = `
+    <p>今の合計評価額：<b>${yen(total)}</b></p>
+    <table><tr><th>銘柄</th><th>今の比率</th><th>目標</th><th>今月これだけ買う</th></tr>${rows}</table>
+    <p class="sub">★ このとおりに買えば、自動で40/40/20に近づきます（合計2万円）。</p>`;
+}
+
+// 保存済みの保有額を復元
+for (const code of ["1489","2559","1540"]){
+  const v = localStorage.getItem("h"+code);
+  if (v !== null) document.getElementById("h"+code).value = v;
+}
+load();
+</script>
+</body></html>

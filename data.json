@@ -1,0 +1,35 @@
+{
+ "updated": "2026-06-12 02:58",
+ "assets": {
+  "1489.T": {
+   "ok": true,
+   "price": 3151.0,
+   "high1y": 3357.1,
+   "drawdown": -6.1,
+   "vs_ma": -2.0,
+   "yield_pct": 2.89,
+   "adjusted": false,
+   "days_since_jump": null
+  },
+  "2559.T": {
+   "ok": true,
+   "price": 2871.0,
+   "high1y": 3045.7,
+   "drawdown": -5.7,
+   "vs_ma": -2.7,
+   "yield_pct": null,
+   "adjusted": true,
+   "days_since_jump": 5
+  },
+  "1540.T": {
+   "ok": true,
+   "price": 19520.0,
+   "high1y": 26500.0,
+   "drawdown": -26.3,
+   "vs_ma": -7.8,
+   "yield_pct": null,
+   "adjusted": false,
+   "days_since_jump": null
+  }
+ }
+}

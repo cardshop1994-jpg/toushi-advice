@@ -78,9 +78,20 @@
     4. あとは<b>放置</b>。値動きを見て売らない。これが成功のコツ。
   </div>
 
-  <p class="foot">※ 本サイトは情報提供であり、利益を保証するものではありません。投資は自己責任で。価格は1日1回（取引終了後）更新です。大きく下がっているときは「安い」と同時に「悪い材料が出ている」可能性もあります。一度に大金を入れず、積立ペースを守ってください。</p>
+  <h2>⑤ 大きく下がっている高配当株（参考・おまけ）</h2>
+  <p class="sub">財務が比較的しっかりした大型の高配当株16社を、<b>「1年の高値から安くなっている順」</b>に毎日並べ替えた一覧です。これは「おすすめ順」ではなく<b>「安くなっている順」</b>です。</p>
+  <div class="golden" style="background:#fdf0ec;border-left-color:#c0392b">⚠ <b>買う前に必ず読むこと：</b>大きく下がった株には、<b>下がる理由</b>（業績悪化・減配の心配など）があることも多いです。過去データの検証では「急落した株を反射的に買う」戦略は<b>損をしました</b>。買うなら ①1社に集中しない（少額ずつ） ②毎月2万円の積立は崩さない ③その会社の悪いニュースが出ていないか一目確認、を守ってください。<b>迷ったら買わずに、いつもの積立だけで十分です</b>（1489を買えば高配当株50社にまとめて投資できています）。</div>
+  <div id="watch-area"><p>読み込み中 ...</p></div>
+
+  <h2>⑥ 配当＋株主優待がねらえる株（NISA外・特定口座向け）</h2>
+  <p class="sub">配当金に加えて<b>株主優待</b>（自社製品・割引券など）がもらえる人気銘柄を、<b>安くなっている順</b>に表示します。NISA枠はメインプラン（①〜④）を優先し、これらは<b>特定口座で少額のお楽しみ</b>として。</p>
+  <div class="golden" style="background:#fff8e6;border-left-color:#d9892a">⚠ <b>株主優待は変更・廃止されます：</b>優待の内容はこのサイトでは固定表示（最新ではない場合あり）。実際にもらえる条件（必要株数・保有期間・内容）は<b>必ず証券アプリや各社サイトで確認</b>してください。多くは<b>100株（数十万円）</b>から。NISA外なので<b>配当に約20%課税</b>される点にも注意。優待目的でも「下がる理由のある株」には警戒を。</div>
+  <div id="yutai-area"><p>読み込み中 ...</p></div>
+
+  <p class="foot">※ 本サイトは情報提供であり、利益を保証するものではありません。投資は自己責任で。価格は1日1回（取引終了後）更新です。大きく下がっているときは「安い」と同時に「悪い材料が出ている」可能性もあります。一度に大金を入れず、積立ペースを守ってください。株主優待の内容・条件は変更されることがあるため、購入前に必ず最新情報をご確認ください。</p>
 </div>
 
+<script src="data.js"></script>
 <script>
 const NAMES = {
   "1489.T": ["日経高配当株50 ETF", "配当の柱", "1489"],
@@ -102,9 +113,20 @@ function tier(dd, adjusted, days){
 }
 
 async function load(){
-  try{
+  let data = null;
+  try {
+    if (location.protocol === "file:") throw new Error("file-protocol");
     const res = await fetch("data.json?t=" + Date.now());
-    const data = await res.json();
+    data = await res.json();
+  } catch(e) {
+    data = window.SITE_DATA || null;   // ファイルを直接開いた場合はこちらを使う
+  }
+  if (!data) {
+    document.getElementById("cards").innerHTML =
+      '<p class="err">データがありません。「スマホで見る.bat」から開くか、データを更新してください。</p>';
+    return;
+  }
+  try{
     document.getElementById("updated").textContent = data.updated + " 更新（毎営業日の取引終了後に自動更新）";
     let html = "";
     for (const tk of Object.keys(NAMES)){
@@ -131,10 +153,78 @@ async function load(){
       </div>`;
     }
     document.getElementById("cards").innerHTML = html;
+    renderWatch(data.watch || []);
+    renderYutai(data.yutai || []);
   }catch(e){
     document.getElementById("cards").innerHTML =
       '<p class="err">データの読み込みに失敗しました。時間をおいて再読み込みしてください。</p>';
   }
+}
+
+function ddColor(dd){
+  if (dd >= -3)  return "#d9892a";
+  if (dd >= -10) return "#3a7bbf";
+  if (dd >= -20) return "#2e9e4f";
+  return "#1d7a3a";
+}
+
+function renderWatch(watch){
+  const area = document.getElementById("watch-area");
+  if (!watch.length){
+    area.innerHTML = '<p class="err">監視リストのデータがありません。</p>';
+    return;
+  }
+  let rows = "";
+  for (const w of watch){
+    const plunge = w.plunge
+      ? ' <span style="background:#c0392b;color:#fff;border-radius:10px;padding:1px 8px;font-size:11px;white-space:nowrap">🔻急落中</span>' : "";
+    const yld = (w.yield_pct !== null && w.yield_pct !== undefined) ? w.yield_pct + "%" : "—";
+    rows += `<tr>
+      <td><a href="https://finance.yahoo.co.jp/quote/${w.code}.T" target="_blank"
+        style="color:#1f3a5f;text-decoration:none"><b>${w.name}</b></a>
+        <span class="tk">${w.code}</span>${plunge}<br>
+        <span class="sub">${yen(w.price)}／100株なら約${yen(w.price*100)}</span></td>
+      <td class="num" style="color:${ddColor(w.drawdown)};font-weight:bold">${w.drawdown}%</td>
+      <td class="num">${yld}</td>
+      <td class="num" style="color:${w.ret5 < 0 ? "#c0392b" : "#2e9e4f"}">${w.ret5 > 0 ? "+" : ""}${w.ret5}%</td>
+    </tr>`;
+  }
+  area.innerHTML = `<table>
+    <tr><th>銘柄（安くなっている順）</th><th>1年高値から</th><th>配当利回り</th><th>直近5日</th></tr>
+    ${rows}</table>
+    <p class="sub">💡 色の意味は②の表と同じです。「🔻急落中」= 直近5日で7%以上下落（<b>理由を確認するまで買わない</b>のが安全）。<b>個別株は通常100株単位での購入</b>です（最低額は上の「100株なら約◯円」が目安）。「S株／かぶミニ」なら1株から買えます。銘柄名をタップするとチャート・ニュースを確認できます。</p>`;
+}
+
+function renderYutai(yutai){
+  const area = document.getElementById("yutai-area");
+  if (!yutai.length){
+    area.innerHTML = '<p class="err">優待銘柄のデータがありません。</p>';
+    return;
+  }
+  let cards = "";
+  for (const y of yutai){
+    const plunge = y.plunge
+      ? ' <span style="background:#c0392b;color:#fff;border-radius:10px;padding:1px 8px;font-size:11px;white-space:nowrap">🔻急落中</span>' : "";
+    const yld = (y.yield_pct !== null && y.yield_pct !== undefined) ? "配当 " + y.yield_pct + "%" : "配当 —";
+    let label = "高値圏";
+    if (y.drawdown < -20) label = "バーゲン";
+    else if (y.drawdown < -10) label = "お買い得";
+    else if (y.drawdown < -3) label = "ふつう";
+    cards += `
+    <div class="card" style="flex-basis:100%">
+      <h3><a href="https://finance.yahoo.co.jp/quote/${y.code}.T" target="_blank"
+        style="color:#1f3a5f;text-decoration:none">${y.name}</a>
+        <span class="tk">${y.code}</span>${plunge}</h3>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px">
+        <span class="price" style="font-size:20px">${yen(y.price)}</span>
+        <span class="dd" style="color:${ddColor(y.drawdown)};font-size:15px">高値から ${y.drawdown}%（${label}）</span>
+      </div>
+      <p class="yield">💰 ${yld}　🎁 優待：${y.perk}</p>
+      <p class="sub">🛒 通常100株単位＝<b>最低 約${yen(y.price*100)}</b>（優待をもらうには${y.shares}必要）<br>
+      ※「S株／かぶミニ」なら1株から買えますが、優待は通常100株からです。内容は要確認。</p>
+    </div>`;
+  }
+  area.innerHTML = `<div class="cards">${cards}</div>`;
 }
 
 function calc(){

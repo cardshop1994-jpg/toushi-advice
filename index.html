@@ -59,10 +59,11 @@
 
   <h2>③ 今月の買い方（あなたの保有額から計算）</h2>
   <div class="hform">
-    <p class="sub">今持っている金額（円）を入れて「計算」を押すと、毎月2万円の振り分けが出ます。入力はこの端末に保存されます。始めていなければ 0 のままでOK。</p>
-    <label>日経高配当50（1489） <input id="h1489" type="number" inputmode="numeric" value="0"></label>
-    <label>オルカン（2559） <input id="h2559" type="number" inputmode="numeric" value="0"></label>
-    <label>純金（1540） <input id="h1540" type="number" inputmode="numeric" value="0"></label>
+    <p class="sub">①今持っている各商品の金額（円）と、②今月入れる金額を入れて「計算」を押すと、4:4:2に近づくための振り分けが出ます。<b>金額は毎月いくらでもOK</b>（少ない月・多い月があっても大丈夫）。入力はこの端末に保存されます。始めていなければ 0 のままで大丈夫。</p>
+    <label>日経高配当50（1489）今の評価額 <input id="h1489" type="number" inputmode="numeric" value="0"></label>
+    <label>オルカン（2559）今の評価額 <input id="h2559" type="number" inputmode="numeric" value="0"></label>
+    <label>純金（1540）今の評価額 <input id="h1540" type="number" inputmode="numeric" value="0"></label>
+    <label style="font-weight:bold; margin-top:10px; padding-top:10px; border-top:1px solid #d7dee6; display:block;">今月入れる金額（円） <input id="amount" type="number" inputmode="numeric" value="20000"></label>
     <button onclick="calc()">計算する</button>
   </div>
   <div id="reb-result"></div>
@@ -234,8 +235,10 @@ function calc(){
     h[code + ".T"] = Math.max(0, v);
     localStorage.setItem("h"+code, v);
   }
+  const amount = Math.max(0, parseInt(document.getElementById("amount").value) || 0);
+  localStorage.setItem("amount", amount);
   const total = Object.values(h).reduce((a,b)=>a+b, 0);
-  const after = total + MONTHLY;
+  const after = total + amount;
   let need = {}, s = 0;
   for (const tk in TARGET){
     need[tk] = Math.max(0, after * TARGET[tk] - h[tk]);
@@ -243,7 +246,7 @@ function calc(){
   }
   const buy = {};
   for (const tk in TARGET){
-    buy[tk] = s > 0 ? MONTHLY * need[tk] / s : MONTHLY * TARGET[tk];
+    buy[tk] = s > 0 ? amount * need[tk] / s : amount * TARGET[tk];
   }
   let rows = "";
   for (const tk in TARGET){
@@ -256,14 +259,16 @@ function calc(){
   document.getElementById("reb-result").innerHTML = `
     <p>今の合計評価額：<b>${yen(total)}</b></p>
     <table><tr><th>銘柄</th><th>今の比率</th><th>目標</th><th>今月これだけ買う</th></tr>${rows}</table>
-    <p class="sub">★ このとおりに買えば、自動で40/40/20に近づきます（合計2万円）。</p>`;
+    <p class="sub">★ このとおりに買えば、4:4:2に近づきます（今月の合計 ${yen(amount)}）。足りていない（安い）資産に多めに回す形になります。</p>`;
 }
 
-// 保存済みの保有額を復元
+// 保存済みの保有額・今月の金額を復元
 for (const code of ["1489","2559","1540"]){
   const v = localStorage.getItem("h"+code);
   if (v !== null) document.getElementById("h"+code).value = v;
 }
+const savedAmount = localStorage.getItem("amount");
+if (savedAmount !== null) document.getElementById("amount").value = savedAmount;
 load();
 </script>
 </body></html>

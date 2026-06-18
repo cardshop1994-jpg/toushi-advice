@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-18 23:05",
+ "updated": "2026-06-19 03:14",
  "assets": {
   "1489.T": {
    "ok": true,
@@ -283,20 +283,20 @@
   {
    "code": "BTC",
    "name": "ビットコイン",
-   "price": 10291882,
+   "price": 10106442,
    "high1y": 18838562,
-   "drawdown": -45.4,
-   "vs_ma": -4.7,
-   "ret7": 4.3
+   "drawdown": -46.4,
+   "vs_ma": -6.4,
+   "ret7": 2.4
   },
   {
    "code": "ETH",
    "name": "イーサリアム",
-   "price": 279116,
+   "price": 270963,
    "high1y": 710063,
-   "drawdown": -60.7,
-   "vs_ma": -4.4,
-   "ret7": 7.3
+   "drawdown": -61.8,
+   "vs_ma": -7.0,
+   "ret7": 4.2
   }
  ]
 }

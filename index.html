@@ -89,7 +89,11 @@
   <div class="golden" style="background:#fff8e6;border-left-color:#d9892a">⚠ <b>株主優待は変更・廃止されます：</b>優待の内容はこのサイトでは固定表示（最新ではない場合あり）。実際にもらえる条件（必要株数・保有期間・内容）は<b>必ず証券アプリや各社サイトで確認</b>してください。多くは<b>100株（数十万円）</b>から。NISA外なので<b>配当に約20%課税</b>される点にも注意。優待目的でも「下がる理由のある株」には警戒を。</div>
   <div id="yutai-area"><p>読み込み中 ...</p></div>
 
-  <p class="foot">※ 本サイトは情報提供であり、利益を保証するものではありません。投資は自己責任で。価格は1日1回（取引終了後）更新です。大きく下がっているときは「安い」と同時に「悪い材料が出ている」可能性もあります。一度に大金を入れず、積立ペースを守ってください。株主優待の内容・条件は変更されることがあるため、購入前に必ず最新情報をご確認ください。</p>
+  <h2>⑦ 暗号資産（ビットコイン・イーサリアム）／別枠・超ハイリスク</h2>
+  <div class="golden" style="background:#fdecec;border-left-color:#c0392b">🛑 <b>必ず読んでください：</b>暗号資産は、①〜④の安全プランとは<b>まったく別物の超ハイリスク</b>です。<b>1年で-70%以上の暴落</b>も普通に起き、配当も利益の裏付けもありません。下の「安い」表示は<b>「もっと下がる可能性」と背中合わせ</b>で、買い推奨ではありません。<br>・<b>NISA対象外</b>。利益は<b>雑所得（最大約55%課税）</b>で株より税金が重い<br>・購入は証券口座ではなく<b>暗号資産取引所</b>（コインチェック・bitFlyer・GMOコイン・楽天ウォレット等）<br>・入れるのは<b>「全額失っても生活に困らない余裕資金」だけ</b>。生活費・将来必要なお金は絶対に入れない</div>
+  <div id="crypto-area"><p>読み込み中 ...</p></div>
+
+  <p class="foot">※ 本サイトは情報提供であり、利益を保証するものではありません。投資は自己責任で。価格は1日1回更新です（暗号資産は24時間動くため、表示と実際の価格に差が出ます）。大きく下がっているときは「安い」と同時に「悪い材料が出ている」可能性もあります。一度に大金を入れず、積立ペースを守ってください。株主優待の内容・条件は変更されることがあるため、購入前に必ず最新情報をご確認ください。暗号資産は特にリスクが高く、余裕資金の範囲で慎重にご判断ください。</p>
 </div>
 
 <script src="data.js"></script>
@@ -156,6 +160,7 @@ async function load(){
     document.getElementById("cards").innerHTML = html;
     renderWatch(data.watch || []);
     renderYutai(data.yutai || []);
+    renderCrypto(data.crypto || []);
   }catch(e){
     document.getElementById("cards").innerHTML =
       '<p class="err">データの読み込みに失敗しました。時間をおいて再読み込みしてください。</p>';
@@ -226,6 +231,37 @@ function renderYutai(yutai){
     </div>`;
   }
   area.innerHTML = `<div class="cards">${cards}</div>`;
+}
+
+function cryptoTier(dd){
+  // 暗号資産は値動きが激しいので、株より広いバンドで判定
+  if (dd >= -10) return ["高値圏", "#d9892a", "高値に近い水準。今からの新規購入は特に慎重に。"];
+  if (dd >= -25) return ["中間", "#3a7bbf", "中間的な水準。買うなら少額に。"];
+  if (dd >= -45) return ["安値圏", "#2e9e4f", "1年高値から大きく下落。ただし暗号資産は“安い”からさらに半値になることもあります。"];
+  return ["大幅安", "#1d7a3a", "暴落水準。反発もあり得ますが、ゼロ近くまで落ちるリスクもあるのが暗号資産。逆張りは超ハイリスク。"];
+}
+
+function renderCrypto(crypto){
+  const area = document.getElementById("crypto-area");
+  if (!crypto.length){ area.innerHTML = '<p class="err">暗号資産のデータがありません。</p>'; return; }
+  let cards = "";
+  for (const c of crypto){
+    const [label, color, msg] = cryptoTier(c.drawdown);
+    cards += `
+    <div class="card" style="flex-basis:100%">
+      <h3>${c.name} <span class="tk">${c.code}/JPY</span></h3>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px">
+        <span class="price" style="font-size:22px">${yen(c.price)}</span>
+        <span class="dd" style="color:${color};font-size:15px">1年高値から ${c.drawdown}%</span>
+      </div>
+      <div class="badge" style="background:${color}">${label}</div>
+      <p class="advice">${msg}</p>
+      <p class="sub">25日平均より ${c.vs_ma > 0 ? "+" : ""}${c.vs_ma}%　直近7日 ${c.ret7 > 0 ? "+" : ""}${c.ret7}%　1年高値 ${yen(c.high1y)}
+      <a href="https://finance.yahoo.co.jp/quote/${c.code}-JPY" target="_blank">チャートを見る</a></p>
+    </div>`;
+  }
+  area.innerHTML = `<div class="cards">${cards}</div>
+    <p class="sub">💡 暗号資産は配当ゼロ・値動きが株の数倍。<b>「安値圏／大幅安」でも、そこからさらに大きく下がることが珍しくありません。</b>買うとしても少額・分割で、失っても困らない範囲に限ってください。</p>`;
 }
 
 function calc(){

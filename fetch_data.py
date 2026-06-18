@@ -44,6 +44,11 @@ YUTAI = {
     "9202.T": ("ANA HD", "国内線の搭乗割引券", "100株"),
     "2579.T": ("コカ・コーラBJH", "自社製品（飲料）", "100株"),
 }
+# 暗号資産（円建て）。超ハイリスク・別枠・NISA対象外・利益は雑所得課税。
+CRYPTO = {
+    "BTC-JPY": "ビットコイン",
+    "ETH-JPY": "イーサリアム",
+}
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data.json")
 
 
@@ -152,17 +157,43 @@ def fetch_yutai(tk: str, name: str, perk: str, shares: str) -> dict | None:
         return None
 
 
+def fetch_crypto(tk: str, name: str) -> dict | None:
+    """暗号資産（円建て）。株のような分割はないので飛び値の除去はしない。
+    1年高値からの下落率・25日平均比・直近7日変化を返す。"""
+    try:
+        h = yf.Ticker(tk).history(period="1y")["Close"].dropna()
+        if len(h) < 30:
+            return None
+        price = float(h.iloc[-1])
+        hi = float(h.max())
+        ma25 = float(h.tail(25).mean())
+        ret7 = (price / float(h.iloc[-8]) - 1) * 100 if len(h) > 8 else 0.0
+        return {
+            "code": tk.replace("-JPY", ""),
+            "name": name,
+            "price": round(price),
+            "high1y": round(hi),
+            "drawdown": round((price / hi - 1) * 100, 1),
+            "vs_ma": round((price / ma25 - 1) * 100, 1),
+            "ret7": round(ret7, 1),
+        }
+    except Exception:
+        return None
+
+
 def main():
     jst = datetime.timezone(datetime.timedelta(hours=9))
     watch = [w for tk, nm in WATCH.items() if (w := fetch_watch(tk, nm))]
     watch.sort(key=lambda w: w["drawdown"])   # 下がっている順
     yutai = [y for tk, (nm, pk, sh) in YUTAI.items() if (y := fetch_yutai(tk, nm, pk, sh))]
     yutai.sort(key=lambda y: y["drawdown"])   # 下がっている順
+    crypto = [c for tk, nm in CRYPTO.items() if (c := fetch_crypto(tk, nm))]
     data = {
         "updated": datetime.datetime.now(jst).strftime("%Y-%m-%d %H:%M"),
         "assets": {tk: fetch_one(tk) for tk in TICKERS},
         "watch": watch,
         "yutai": yutai,
+        "crypto": crypto,
     }
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=1)

@@ -2,7 +2,7 @@ name: update-data
 
 on:
   schedule:
-    - cron: "30 7 * * 1-5"   # 毎営業日 16:30 JST（東証の取引終了後）
+    - cron: "0 */3 * * *"     # 3時間おき＝日本時間 0,3,6,9,12,15,18,21時に自動更新（GitHub無料・Claude課金なし）
   workflow_dispatch:          # 手動実行も可能
 
 permissions:

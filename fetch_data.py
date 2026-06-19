@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-サイト用データ生成 : 3銘柄の価格・1年高値からの下落率・分配金利回りを
-data.json に書き出す。GitHub Actions が毎営業日の取引終了後に自動実行する。
+サイト用データ生成 : コア3資産・配当株・暗号資産の価格／1年高値からの下落率／
+利回りを data.json と data.js に書き出す。GitHub Actions が定期実行する。
 """
 from __future__ import annotations
 import json, datetime, os
@@ -9,41 +9,18 @@ import json, datetime, os
 import pandas as pd
 import yfinance as yf
 
+# コア3資産（毎月2万円・4:4:2・再投資）
 TICKERS = ["1489.T", "2559.T", "1540.T"]
 
-# 監視リスト: 財務が比較的安定した大型・高配当株（個別株はあくまで「おまけ」）
-WATCH = {
-    "8306.T": "三菱UFJ",
-    "8316.T": "三井住友FG",
-    "8411.T": "みずほFG",
-    "8058.T": "三菱商事",
-    "8001.T": "伊藤忠商事",
-    "8031.T": "三井物産",
-    "2914.T": "JT",
+# 余剰資金で買い足す配当株（1株から手をつけやすい銘柄）。
+DIVIDEND = {
+    "1489.T": "日経高配当株50 ETF",
     "9432.T": "NTT",
-    "9433.T": "KDDI",
-    "9434.T": "ソフトバンク",
-    "4502.T": "武田薬品",
+    "2914.T": "JT",
+    "8058.T": "三菱商事",
     "8766.T": "東京海上",
-    "5108.T": "ブリヂストン",
-    "7203.T": "トヨタ自動車",
-    "1605.T": "INPEX",
-    "8591.T": "オリックス",
 }
-# 配当＋株主優待ねらいの個別株（NISA外・特定口座向け）。
-# 優待内容は変更・廃止されるため、各社IR/証券アプリで必ず最新を確認すること。
-# (証券コード: (社名, 優待の概要, 優待に必要な株数の目安))
-YUTAI = {
-    "8267.T": ("イオン", "オーナーズカードで買物金額の3〜7%キャッシュバック", "100株"),
-    "2503.T": ("キリンHD", "自社製品（ビール・飲料）など", "100株"),
-    "9831.T": ("ヤマダHD", "店舗で使える買物優待券", "100株"),
-    "8233.T": ("高島屋", "優待カード（10%割引・限度額あり）", "100株"),
-    "9020.T": ("JR東日本", "運賃割引券・グループ優待券", "100株"),
-    "2811.T": ("カゴメ", "自社製品の詰め合わせ", "100株"),
-    "7164.T": ("全国保証", "QUOカード（高配当が魅力）", "100株"),
-    "9202.T": ("ANA HD", "国内線の搭乗割引券", "100株"),
-    "2579.T": ("コカ・コーラBJH", "自社製品（飲料）", "100株"),
-}
+
 # 暗号資産（円建て）。超ハイリスク・別枠・NISA対象外・利益は雑所得課税。
 CRYPTO = {
     "BTC-JPY": "ビットコイン",
@@ -69,13 +46,9 @@ def fetch_one(tk: str) -> dict:
 
     price = float(closes.iloc[-1])
     hi = float(closes.max())
-    drawdown = (price / hi - 1) * 100  # 高値からの下落率（マイナス値）
-
     n = len(closes)
     ma20 = float(closes.tail(min(20, n)).mean())
-    vs_ma = (price / ma20 - 1) * 100
 
-    # 直近1年の分配金合計 → いま買った場合の利回り（分割調整中は計算しない）
     yield_pct = None
     if not adjusted:
         divs = t.dividends
@@ -89,19 +62,18 @@ def fetch_one(tk: str) -> dict:
         "ok": True,
         "price": round(price, 1),
         "high1y": round(hi, 1),
-        "drawdown": round(drawdown, 1),
-        "vs_ma": round(vs_ma, 1),
+        "drawdown": round((price / hi - 1) * 100, 1),
+        "vs_ma": round((price / ma20 - 1) * 100, 1),
         "yield_pct": yield_pct,
-        "adjusted": adjusted,            # 分割等でデータ調整中フラグ
+        "adjusted": adjusted,
         "days_since_jump": n if adjusted else None,
     }
 
 
 def _price_metrics(tk: str) -> dict | None:
-    """価格・1年高値からの下落率・直近5日変化・配当利回りを返す共通処理。"""
+    """価格・1年高値からの下落率・直近5日変化・配当利回り。"""
     t = yf.Ticker(tk)
-    h = t.history(period="1y")
-    closes = h["Close"].dropna()
+    closes = t.history(period="1y")["Close"].dropna()
     if len(closes) < 30:
         return None
     jumps = closes.pct_change().abs()
@@ -112,7 +84,6 @@ def _price_metrics(tk: str) -> dict | None:
             return None
     price = float(closes.iloc[-1])
     hi = float(closes.max())
-    dd = (price / hi - 1) * 100
     ret5 = (price / float(closes.iloc[-6]) - 1) * 100 if len(closes) > 6 else 0.0
     yield_pct = None
     divs = t.dividends
@@ -124,42 +95,26 @@ def _price_metrics(tk: str) -> dict | None:
     return {
         "code": tk.replace(".T", ""),
         "price": round(price, 1),
-        "drawdown": round(dd, 1),
+        "drawdown": round((price / hi - 1) * 100, 1),
         "ret5": round(ret5, 1),
         "yield_pct": yield_pct,
-        "plunge": ret5 <= -7.0,   # 5日で-7%超 = 普段より大きな下落
+        "plunge": ret5 <= -7.0,
     }
 
 
-def fetch_watch(tk: str, name: str) -> dict | None:
-    """監視リスト用（高配当の大型株）。"""
+def fetch_dividend(tk: str, name: str) -> dict | None:
     try:
         m = _price_metrics(tk)
         if m is None:
             return None
         m["name"] = name
-        return m
-    except Exception:
-        return None
-
-
-def fetch_yutai(tk: str, name: str, perk: str, shares: str) -> dict | None:
-    """配当＋株主優待ねらいの個別株（NISA外向け）。"""
-    try:
-        m = _price_metrics(tk)
-        if m is None:
-            return None
-        m["name"] = name
-        m["perk"] = perk
-        m["shares"] = shares
         return m
     except Exception:
         return None
 
 
 def fetch_crypto(tk: str, name: str) -> dict | None:
-    """暗号資産（円建て）。株のような分割はないので飛び値の除去はしない。
-    1年高値からの下落率・25日平均比・直近7日変化を返す。"""
+    """暗号資産（円建て）。1年高値からの下落率・25日平均比・直近7日変化。"""
     try:
         h = yf.Ticker(tk).history(period="1y")["Close"].dropna()
         if len(h) < 30:
@@ -183,21 +138,17 @@ def fetch_crypto(tk: str, name: str) -> dict | None:
 
 def main():
     jst = datetime.timezone(datetime.timedelta(hours=9))
-    watch = [w for tk, nm in WATCH.items() if (w := fetch_watch(tk, nm))]
-    watch.sort(key=lambda w: w["drawdown"])   # 下がっている順
-    yutai = [y for tk, (nm, pk, sh) in YUTAI.items() if (y := fetch_yutai(tk, nm, pk, sh))]
-    yutai.sort(key=lambda y: y["drawdown"])   # 下がっている順
+    dividend = [d for tk, nm in DIVIDEND.items() if (d := fetch_dividend(tk, nm))]
+    dividend.sort(key=lambda d: d["drawdown"])   # 安い順
     crypto = [c for tk, nm in CRYPTO.items() if (c := fetch_crypto(tk, nm))]
     data = {
         "updated": datetime.datetime.now(jst).strftime("%Y-%m-%d %H:%M"),
         "assets": {tk: fetch_one(tk) for tk in TICKERS},
-        "watch": watch,
-        "yutai": yutai,
+        "dividend": dividend,
         "crypto": crypto,
     }
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=1)
-    # ファイルを直接ダブルクリックで開いても読めるよう、JS形式でも書き出す
     js_path = os.path.join(os.path.dirname(OUT), "data.js")
     with open(js_path, "w", encoding="utf-8") as f:
         f.write("window.SITE_DATA = ")
@@ -205,11 +156,9 @@ def main():
         f.write(";")
     print("wrote", OUT, "and", js_path)
     for tk, a in data["assets"].items():
-        if a.get("ok"):
-            print(f"  {tk}: {a['price']}円 / 1年高値から {a['drawdown']}% / "
-                  f"利回り {a['yield_pct']}% / 調整中={a['adjusted']}")
-        else:
-            print(f"  {tk}: 取得失敗")
+        print(f"  core {tk}: {a.get('price')} / DD {a.get('drawdown')}%")
+    for d in dividend:
+        print(f"  配当 {d['name']}({d['code']}): {d['price']}円 DD{d['drawdown']}% 利回り{d['yield_pct']}%")
 
 
 if __name__ == "__main__":

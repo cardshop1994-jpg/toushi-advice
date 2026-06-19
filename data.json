@@ -1,32 +1,32 @@
 {
- "updated": "2026-06-19 03:14",
+ "updated": "2026-06-20 01:42",
  "assets": {
   "1489.T": {
    "ok": true,
-   "price": 3268.0,
+   "price": 3243.0,
    "high1y": 3357.1,
-   "drawdown": -2.7,
-   "vs_ma": 1.3,
-   "yield_pct": 2.78,
+   "drawdown": -3.4,
+   "vs_ma": 0.5,
+   "yield_pct": 2.81,
    "adjusted": false,
    "days_since_jump": null
   },
   "2559.T": {
    "ok": true,
-   "price": 2978.0,
+   "price": 2968.0,
    "high1y": 2983.0,
-   "drawdown": -0.2,
-   "vs_ma": 1.2,
+   "drawdown": -0.5,
+   "vs_ma": 0.7,
    "yield_pct": null,
    "adjusted": true,
-   "days_since_jump": 8
+   "days_since_jump": 9
   },
   "1540.T": {
    "ok": true,
-   "price": 20680.0,
+   "price": 19990.0,
    "high1y": 26500.0,
-   "drawdown": -22.0,
-   "vs_ma": -1.3,
+   "drawdown": -24.6,
+   "vs_ma": -4.2,
    "yield_pct": null,
    "adjusted": false,
    "days_since_jump": null
@@ -283,20 +283,20 @@
   {
    "code": "BTC",
    "name": "ビットコイン",
-   "price": 10106442,
+   "price": 10203295,
    "high1y": 18838562,
-   "drawdown": -46.4,
-   "vs_ma": -6.4,
-   "ret7": 2.4
+   "drawdown": -45.8,
+   "vs_ma": -4.8,
+   "ret7": 0.2
   },
   {
    "code": "ETH",
    "name": "イーサリアム",
-   "price": 270963,
+   "price": 275052,
    "high1y": 710063,
-   "drawdown": -61.8,
-   "vs_ma": -7.0,
-   "ret7": 4.2
+   "drawdown": -61.3,
+   "vs_ma": -5.0,
+   "ret7": 2.7
   }
  ]
 }

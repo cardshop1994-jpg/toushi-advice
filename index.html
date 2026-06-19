@@ -6,64 +6,62 @@
 <title>かんたん投資アドバイス</title>
 <style>
   body{font-family:"Meiryo","Hiragino Kaku Gothic ProN",sans-serif;background:#f4f7fa;color:#222;margin:0;padding:0 14px 40px;}
-  .wrap{max-width:780px;margin:0 auto;}
+  .wrap{max-width:820px;margin:0 auto;}
   h1{text-align:center;color:#1f3a5f;font-size:23px;margin:22px 0 4px;}
   .date{text-align:center;color:#777;font-size:13px;margin-bottom:16px;}
   h2{color:#1f3a5f;border-bottom:3px solid #2e75b6;padding-bottom:6px;margin-top:28px;font-size:18px;}
   .golden{background:#eaf4ff;border-left:5px solid #2e75b6;padding:13px 15px;border-radius:8px;margin:14px 0;font-size:14px;line-height:1.7;}
   .cards{display:flex;flex-wrap:wrap;gap:14px;}
   .card{flex:1 1 230px;background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,.08);}
-  .card h3{font-size:15px;margin:0 0 8px;color:#333;}
+  .card h3{font-size:14px;margin:0 0 8px;color:#333;}
   .tk{color:#999;font-size:12px;}
-  .price{font-size:24px;font-weight:bold;color:#1f3a5f;}
-  .dd{font-size:18px;font-weight:bold;margin:6px 0 2px;}
-  .badge{display:inline-block;color:#fff;border-radius:20px;padding:4px 14px;font-size:14px;font-weight:bold;margin:6px 0;}
-  .advice{font-size:14px;margin:6px 0;line-height:1.6;}
+  .price{font-size:22px;font-weight:bold;color:#1f3a5f;}
+  .dd{font-size:15px;font-weight:bold;margin:6px 0 2px;}
+  .badge{display:inline-block;color:#fff;border-radius:20px;padding:3px 12px;font-size:13px;font-weight:bold;margin:6px 0;}
+  .advice{font-size:13px;margin:6px 0;line-height:1.6;}
   .sub{font-size:12px;color:#777;margin:4px 0;line-height:1.6;}
   .yield{font-size:13px;color:#1d7a3a;font-weight:bold;margin:4px 0;}
   table{width:100%;border-collapse:collapse;margin:10px 0;background:#fff;}
-  th,td{border:1px solid #e0e6ec;padding:9px;font-size:13px;text-align:left;}
+  th,td{border:1px solid #e0e6ec;padding:8px;font-size:13px;text-align:left;}
   th{background:#1f3a5f;color:#fff;}
   td.num{text-align:center;}
   td.buy{font-weight:bold;color:#2e9e4f;text-align:center;}
   .hform{background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,.08);margin-bottom:14px;}
-  .hform label{display:block;font-size:14px;margin:8px 0;}
-  .hform input{width:100%;box-sizing:border-box;padding:12px;font-size:18px;border:1px solid #ccd;border-radius:8px;margin-top:4px;}
+  .hform label{display:block;font-size:13px;margin:7px 0;}
+  .hform input{width:100%;box-sizing:border-box;padding:11px;font-size:17px;border:1px solid #ccd;border-radius:8px;margin-top:3px;}
   .hform button{width:100%;padding:14px;font-size:17px;font-weight:bold;color:#fff;background:#2e75b6;border:none;border-radius:8px;margin-top:12px;}
+  .hrow{padding:8px 6px;border-bottom:1px solid #eef1f5;border-radius:6px;}
+  .hrow.off{opacity:.5;background:#e8e8e8;}
+  .hrow .excl{font-size:12px;color:#777;display:flex;align-items:center;gap:6px;margin:5px 0 0;}
+  .hrow .excl input{width:auto;margin:0;}
   .step{background:#fff;border-radius:12px;padding:16px 20px;box-shadow:0 2px 6px rgba(0,0,0,.08);font-size:14px;line-height:1.9;}
-  .legend td:first-child{font-weight:bold;white-space:nowrap;}
-  .dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:middle;}
   .foot{font-size:11px;color:#999;margin-top:24px;line-height:1.6;}
   .err{color:#c0392b;font-size:13px;}
-  #reb-result{display:none;}
 </style>
 </head>
 <body><div class="wrap">
   <h1>かんたん投資アドバイス</h1>
   <div class="date" id="updated">読み込み中 ...</div>
 
-  <div class="golden">📌 <b>いちばん大事なこと：</b>株価が上がっても下がっても、「毎月決めた額（2万円）を買い続ける」のが、いちばん勝ちやすい方法です。下の判定は<b>「買い増しのタイミングの参考」</b>です。<b>高いときに余分に買わないため</b>の目印として使ってください。</div>
+  <div class="golden">📌 <b>いちばん大事なこと：</b>株価が上下しても「毎月決めた額を買い続ける」のが、いちばん勝ちやすい方法です。下の判定は<b>「安い時に少し多めに買う」目安</b>。すべてNISA枠で。</div>
 
-  <h2>① いまの値段は高い？安い？（1年の高値とくらべて）</h2>
+  <h2>① 6資産の値段（高い？安い？）</h2>
   <div class="cards" id="cards"><p>価格データを読み込んでいます ...</p></div>
 
   <h2>② 判定のルール（下落何％で「おすすめ」になるか）</h2>
-  <table class="legend">
-    <tr><th>1年の高値からの下落</th><th>判定</th><th>どうすればいい？</th></tr>
-    <tr><td><span class="dot" style="background:#d9892a"></span>0〜3%</td><td>高値圏</td><td>いまは高め。<b>買い増しはしない</b>。いつもの積立だけ</td></tr>
-    <tr><td><span class="dot" style="background:#3a7bbf"></span>3〜10%</td><td>ふつう</td><td>予定どおり毎月の積立でOK</td></tr>
-    <tr><td><span class="dot" style="background:#2e9e4f"></span>10〜20%</td><td><b>お買い得</b></td><td>高値より1割以上安い。<b>少し多めに買ってもよい時期</b></td></tr>
-    <tr><td><span class="dot" style="background:#1d7a3a"></span>20%以上</td><td><b>バーゲン</b></td><td>めったにない安さ。<b>余裕資金があれば買い増しチャンス</b></td></tr>
+  <table>
+    <tr><th>1年の高値からの下落</th><th>判定</th><th>今月の買い方</th></tr>
+    <tr><td>0〜3%</td><td>高値圏</td><td>高め。<b>控えめ</b>に</td></tr>
+    <tr><td>3〜10%</td><td>ふつう</td><td>予定どおり</td></tr>
+    <tr><td>10〜20%</td><td><b>お買い得</b></td><td><b>少し多め</b>に</td></tr>
+    <tr><td>20%以上</td><td><b>バーゲン</b></td><td><b>多め</b>に</td></tr>
   </table>
-  <p class="sub">💡 配当（分配金）が目的なら、<b>値段が下がったときに買うほど、同じお金で多くの口数が買え、利回りが上がります</b>。だから「高値圏で余分に買わない」ことが大切です。</p>
 
-  <h2>③ 今月の買い方（NISA統合・4:4:2ベース／安い資産に少し多め）</h2>
+  <h2>③ 今月の買い方（NISA・4:4:2ベース／安い資産に少し多め）</h2>
   <div class="hform">
-    <p class="sub">いま投じている評価額と、今月の投資額を入れて「計算」。<b>4:4:2を基本に、その時の株価で“安くなっている資産”へ少し多め</b>に配分する案を出します。高配当ぶんは5銘柄に自動で振り分け。すべてNISA枠。金額は毎月いくらでもOK（入力は端末に保存）。</p>
-    <label>オルカン（全世界株）今の評価額 <input id="h2559" type="number" inputmode="numeric" value="0"></label>
-    <label>高配当株（5銘柄まとめて）今の評価額 <input id="h1489" type="number" inputmode="numeric" value="0"></label>
-    <label>金（ゴールド）今の評価額 <input id="h1540" type="number" inputmode="numeric" value="0"></label>
-    <label style="font-weight:bold; margin-top:10px; padding-top:10px; border-top:1px solid #d7dee6; display:block;">今月の投資額（円） <input id="amount" type="number" inputmode="numeric" value="20000"></label>
+    <p class="sub">6資産それぞれの<b>今の評価額</b>と<b>今月の投資額</b>を入れて「計算」。4:4:2（オルカン40／高配当4銘柄計40／金20）を基本に、<b>安くなっている資産へ少し多め</b>に配分します。金額は毎月いくらでもOK（入力は端末に保存）。</p>
+    <div id="holdings"></div>
+    <label style="font-weight:bold; margin-top:10px; padding-top:10px; border-top:1px solid #d7dee6;">今月の投資額（円） <input id="amount" type="number" inputmode="numeric" value="20000"></label>
     <button onclick="calc()">計算する</button>
   </div>
   <div id="reb-result"></div>
@@ -71,118 +69,171 @@
   <h2>④ はじめの一歩（初めての人へ）</h2>
   <div class="step">
     1. ネット証券（<b>SBI証券</b> か <b>楽天証券</b>）で口座を作る（<b>NISAも同時申込</b>）<br>
-    2. 利益が非課税になる<b>新NISA</b>で買う（これ大事）<br>
-    3. 毎月の自動積立を設定する。そのまま注文できる組み合わせ：<br>
-    　・<b>eMAXIS Slim 全世界株式（オール・カントリー）</b>…投資信託。毎月8,000円（2559と同じ中身。全自動OK）<br>
-    　・<b>純金ファンド（ファインゴールド等）</b>…投資信託。毎月4,000円（1540と同じ金。全自動OK）<br>
-    　・<b>日経高配当株50 ETF（1489）</b>…毎月8,000円分。月1回アプリで「1489」を検索して買う（5分）<br>
+    2. 利益・配当が非課税になる<b>新NISA</b>で買う（配当非課税には「株式数比例配分方式」の設定）<br>
+    3. 個別株（NTT・三菱商事・東京海上）は<b>1株から</b>「S株／かぶミニ」で。オルカン・金は投信でもETFでも可<br>
     4. あとは<b>放置</b>。値動きを見て売らない。これが成功のコツ。
   </div>
 
   <h2>⑤ 暗号資産（ビットコイン・イーサリアム）／別枠・超ハイリスク</h2>
-  <div class="golden" style="background:#fdecec;border-left-color:#c0392b">🛑 <b>必ず読んでください：</b>暗号資産は、①〜④の安全プランとは<b>まったく別物の超ハイリスク</b>です。<b>1年で-70%以上の暴落</b>も普通に起き、配当も利益の裏付けもありません。下の「安い」表示は<b>「もっと下がる可能性」と背中合わせ</b>で、買い推奨ではありません。<br>・<b>NISA対象外</b>。利益は<b>雑所得（最大約55%課税）</b>で株より税金が重い<br>・購入は証券口座ではなく<b>暗号資産取引所</b>（コインチェック・bitFlyer・GMOコイン・楽天ウォレット等）<br>・入れるのは<b>「全額失っても生活に困らない余裕資金」だけ</b>。生活費・将来必要なお金は絶対に入れない</div>
+  <div class="golden" style="background:#fdecec;border-left-color:#c0392b">🛑 <b>必ず読む：</b>暗号資産は①〜③の安全プランとは<b>まったく別物の超ハイリスク</b>。1年で-70%超の暴落も普通で、配当も裏付けもありません。<b>NISA対象外・利益は雑所得（最大約55%課税）</b>。購入は暗号資産取引所。入れるのは<b>失っても困らない余裕資金だけ</b>。</div>
   <div id="crypto-area"><p>読み込み中 ...</p></div>
 
-  <p class="foot">※ 本サイトは情報提供であり、利益を保証するものではありません。投資は自己責任で。価格は1日1回更新です（暗号資産は24時間動くため、表示と実際の価格に差が出ます）。大きく下がっているときは「安い」と同時に「悪い材料が出ている」可能性もあります。一度に大金を入れず、積立ペースを守ってください。株主優待の内容・条件は変更されることがあるため、購入前に必ず最新情報をご確認ください。暗号資産は特にリスクが高く、余裕資金の範囲で慎重にご判断ください。</p>
+  <p class="foot">※ 情報提供であり利益を保証しません。投資は自己責任で。価格は3時間おきに自動更新（GitHubの無料サーバーで実行、Claude課金なし）。大きく下がっている時は「安い」と同時に「悪い材料」が出ている可能性も。一度に大金を入れず積立ペースを守ってください。暗号資産は特にリスクが高く余裕資金の範囲で。</p>
 </div>
 
 <script src="data.js"></script>
 <script>
-const NAMES = {
-  "1489.T": ["日経高配当株50 ETF", "配当の柱", "1489"],
-  "2559.T": ["全世界株式 ETF・オルカン", "世界に分散", "2559"],
-  "1540.T": ["純金", "暴落のクッション", "1540"],
-};
-const TARGET = { "1489.T": 0.40, "2559.T": 0.40, "1540.T": 0.20 };
-const MONTHLY = 20000;
-
 function yen(x){ return Math.round(x).toLocaleString("ja-JP") + "円"; }
-
-function tier(dd, adjusted, days){
-  if (adjusted && days !== null && days < 6)
-    return ["判定おやすみ中", "#888888", "分割やデータ調整の直後のため判定を一時停止。いつもの金額でOK。"];
-  if (dd >= -3)  return ["高値圏", "#d9892a", "いまは高め。買い増しはせず、いつもの積立だけにしましょう。"];
-  if (dd >= -10) return ["ふつう", "#3a7bbf", "予定どおり毎月の積立でOK。"];
-  if (dd >= -20) return ["お買い得", "#2e9e4f", "高値より1割以上安い。少し多めに買ってもよい時期です。"];
-  return ["バーゲン", "#1d7a3a", "めったにない安さ。余裕資金があれば買い増しのチャンスです。"];
-}
-
-async function load(){
-  let data = null;
-  try {
-    if (location.protocol === "file:") throw new Error("file-protocol");
-    const res = await fetch("data.json?t=" + Date.now());
-    data = await res.json();
-  } catch(e) {
-    data = window.SITE_DATA || null;   // ファイルを直接開いた場合はこちらを使う
-  }
-  if (!data) {
-    document.getElementById("cards").innerHTML =
-      '<p class="err">データがありません。「スマホで見る.bat」から開くか、データを更新してください。</p>';
-    return;
-  }
-  try{
-    document.getElementById("updated").textContent = data.updated + " 更新（毎営業日の取引終了後に自動更新）";
-    let html = "";
-    for (const tk of Object.keys(NAMES)){
-      const a = data.assets[tk];
-      const [name, role, code] = NAMES[tk];
-      if (!a || !a.ok){
-        html += `<div class="card"><h3>${name}（${role}）</h3><p class="err">データを取得できませんでした</p></div>`;
-        continue;
-      }
-      const [label, color, msg] = tier(a.drawdown, a.adjusted, a.days_since_jump);
-      const yieldHtml = a.yield_pct !== null && a.yield_pct !== undefined
-        ? `<p class="yield">💰 いま買うと分配金利回り 約${a.yield_pct}%</p>` : "";
-      html += `
-      <div class="card">
-        <h3>${name}（${role}） <span class="tk">${code}</span></h3>
-        <div class="price">${yen(a.price)}</div>
-        <div class="dd" style="color:${color}">1年の高値から ${a.drawdown}%</div>
-        <div class="badge" style="background:${color}">${label}</div>
-        <p class="advice">${msg}</p>
-        ${yieldHtml}
-        <p class="sub">1年高値 ${yen(a.high1y)}
-        <a href="https://finance.yahoo.co.jp/quote/${tk}" target="_blank">チャートを見る</a>
-        証券アプリで「${code}」を検索</p>
-      </div>`;
-    }
-    document.getElementById("cards").innerHTML = html;
-    window.ASSETS = data.assets || {};
-    window.DIVDATA = data.dividend || [];
-    renderCrypto(data.crypto || []);
-  }catch(e){
-    document.getElementById("cards").innerHTML =
-      '<p class="err">データの読み込みに失敗しました。時間をおいて再読み込みしてください。</p>';
-  }
-}
-
-function ddColor(dd){
-  if (dd >= -3)  return "#d9892a";
-  if (dd >= -10) return "#3a7bbf";
-  if (dd >= -20) return "#2e9e4f";
-  return "#1d7a3a";
-}
+function numv(id){ const el=document.getElementById(id); return el ? Math.max(0, parseInt(el.value)||0) : 0; }
 
 function divTier(dd){
-  // 高値からの下落で「今月どれだけ多めに買うか」の倍率を決める（安いほど多め）
   if (dd >= -3)  return ["高値圏", "#d9892a", 0.6];
   if (dd >= -10) return ["ふつう", "#3a7bbf", 1.0];
   if (dd >= -20) return ["お買い得", "#2e9e4f", 1.5];
   return ["バーゲン", "#1d7a3a", 2.0];
 }
-
-function numv(id){ return Math.max(0, parseInt(document.getElementById(id).value) || 0); }
-function assetDD(tk){ const a = (window.ASSETS||{})[tk]; return (a && a.ok) ? a.drawdown : 0; }
-
-function cryptoTier(dd){
-  // 暗号資産は値動きが激しいので、株より広いバンドで判定
-  if (dd >= -10) return ["高値圏", "#d9892a", "高値に近い水準。今からの新規購入は特に慎重に。"];
-  if (dd >= -25) return ["中間", "#3a7bbf", "中間的な水準。買うなら少額に。"];
-  if (dd >= -45) return ["安値圏", "#2e9e4f", "1年高値から大きく下落。ただし暗号資産は“安い”からさらに半値になることもあります。"];
-  return ["大幅安", "#1d7a3a", "暴落水準。反発もあり得ますが、ゼロ近くまで落ちるリスクもあるのが暗号資産。逆張りは超ハイリスク。"];
+function tierMsg(label){
+  return {"高値圏":"値段は高め。目標比率を“超えて”余分に買うのは控えめに（不足ぶんは買ってOK）。",
+          "ふつう":"予定どおりでOK。",
+          "お買い得":"高値より1割安い。少し多めに。","バーゲン":"めったにない安さ。多めに。"}[label] || "";
 }
 
+async function load(){
+  let data = null;
+  try {
+    if (location.protocol === "file:") throw new Error("file");
+    const res = await fetch("data.json?t=" + Date.now());
+    data = await res.json();
+  } catch(e) { data = window.SITE_DATA || null; }
+  if (!data){ document.getElementById("cards").innerHTML = '<p class="err">データがありません。</p>'; return; }
+  try{
+    window.PLAN = data.plan || [];
+    document.getElementById("updated").textContent = data.updated + " 更新（3時間おき自動）";
+    renderCards(window.PLAN);
+    buildHoldings(window.PLAN);
+    renderCrypto(data.crypto || []);
+  }catch(e){ document.getElementById("cards").innerHTML = '<p class="err">表示に失敗しました。</p>'; }
+}
+
+function renderCards(plan){
+  let html = "";
+  for (const a of plan){
+    let label, color, msg;
+    if (a.adjusted && a.days_since_jump !== null && a.days_since_jump < 6){
+      label = "判定おやすみ中"; color = "#888888"; msg = "分割直後で判定休止。いつもの金額でOK。";
+    } else {
+      [label, color] = divTier(a.drawdown); msg = tierMsg(label);
+    }
+    const yl = (a.yield_pct !== null && a.yield_pct !== undefined) ? `<p class="yield">💰 利回り 約${a.yield_pct}%</p>` : "";
+    html += `
+    <div class="card">
+      <h3>${a.name} <span class="tk">${a.code}</span> <span style="color:#999;font-size:11px">目標${Math.round(a.target*100)}%</span></h3>
+      <div class="price">${yen(a.price)}</div>
+      <div class="dd" style="color:${color}">1年高値から ${a.drawdown}%</div>
+      <div class="badge" style="background:${color}">${label}</div>
+      <p class="advice">${msg}</p>${yl}
+      <p class="sub">1年高値 ${yen(a.high1y)} <a href="https://finance.yahoo.co.jp/quote/${a.code}.T" target="_blank">チャート</a></p>
+    </div>`;
+  }
+  document.getElementById("cards").innerHTML = html;
+}
+
+function buildHoldings(plan){
+  let h = "";
+  for (const a of plan){
+    const v = localStorage.getItem("h"+a.code) || 0;
+    const off = localStorage.getItem("x"+a.code) === "1";
+    h += `<div class="hrow${off?" off":""}" id="row-${a.code}">
+      <label style="margin:0;">${a.name}（${a.code}）今の評価額 <input id="h${a.code}" type="number" inputmode="numeric" value="${v}"${off?" disabled":""}></label>
+      <label class="excl"><input type="checkbox" id="x${a.code}" onchange="toggleExcl('${a.code}')"${off?" checked":""}> この株には投資しない</label>
+    </div>`;
+  }
+  document.getElementById("holdings").innerHTML = h;
+  const sa = localStorage.getItem("amount");
+  if (sa !== null) document.getElementById("amount").value = sa;
+}
+
+function toggleExcl(code){
+  const on = document.getElementById("x"+code).checked;
+  localStorage.setItem("x"+code, on ? "1" : "0");
+  document.getElementById("row-"+code).classList.toggle("off", on);
+  document.getElementById("h"+code).disabled = on;
+}
+
+function calc(){
+  const plan = window.PLAN || [];
+  if (!plan.length) return;
+  // チェックの入った（除外する）資産
+  const excl = {};
+  for (const a of plan){ const c = document.getElementById("x"+a.code); excl[a.code] = c ? c.checked : false; }
+  const kept = plan.filter(a => !excl[a.code]);
+  const keptTgtSum = kept.reduce((s,a)=>s+a.target, 0) || 1;
+
+  let hold = {}, totalKept = 0;
+  for (const a of plan){ const v = numv("h"+a.code); hold[a.code] = v; localStorage.setItem("h"+a.code, v); if (!excl[a.code]) totalKept += v; }
+  const amount = numv("amount"); localStorage.setItem("amount", amount);
+  const after = totalKept + amount;
+
+  // 各資産の「目標までの不足額」（これを超えて買わない＝行き過ぎ防止）
+  let gap = {};
+  for (const a of kept){ const et = a.target/keptTgtSum; gap[a.code] = Math.max(0, after*et - hold[a.code]); }
+  // 不足の範囲内で、安い資産（倍率が高い）から優先して埋める。各資産は不足額で頭打ち。
+  let buyMap = {};
+  for (const a of kept) buyMap[a.code] = 0;
+  let remaining = amount;
+  for (let iter = 0; iter < 6 && remaining > 1; iter++){
+    const active = kept.filter(a => buyMap[a.code] < gap[a.code] - 0.5);
+    if (!active.length) break;
+    const w = active.map(a => (gap[a.code] - buyMap[a.code]) * divTier(a.drawdown)[2]);
+    const sw = w.reduce((x,y)=>x+y, 0);
+    if (sw <= 0) break;
+    let spent = 0;
+    for (let i = 0; i < active.length; i++){
+      const a = active[i];
+      const add = Math.min(remaining * w[i] / sw, gap[a.code] - buyMap[a.code]);
+      buyMap[a.code] += add; spent += add;
+    }
+    remaining -= spent;
+    if (spent < 1) break;
+  }
+  // 全資産が目標に到達してもまだ余る場合は、目標比率(4:4:2)どおりに配分
+  if (remaining > 1){
+    for (const a of kept){ buyMap[a.code] += remaining * (a.target/keptTgtSum); }
+  }
+
+  let rows = "";
+  for (const a of plan){
+    if (excl[a.code]){
+      rows += `<tr style="opacity:.45"><td>${a.name} <span class="tk">${a.code}</span></td><td class="num">除外</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>`;
+      continue;
+    }
+    const et = a.target/keptTgtSum;
+    const buy = buyMap[a.code] || 0;
+    const sh = Math.floor(buy / a.price);
+    const [label, color] = divTier(a.drawdown);
+    const pct = totalKept > 0 ? (hold[a.code]/totalKept*100).toFixed(0)+"%" : "—";
+    rows += `<tr><td><b>${a.name}</b> <span class="tk">${a.code}</span></td>
+      <td class="num">${pct}→${Math.round(et*100)}%</td>
+      <td class="num" style="color:${color}">${a.drawdown}%</td>
+      <td class="buy">${yen(buy)}</td>
+      <td class="num">${sh>=1 ? "約"+sh+"株" : "繰越"}</td></tr>`;
+  }
+  const exCount = plan.length - kept.length;
+  const exNote = exCount > 0 ? `${exCount}銘柄を除外し、残りで比率を組み直しました。` : "";
+  const el = document.getElementById("reb-result");
+  el.style.display = "block";
+  el.innerHTML = `
+    <p>今の合計評価額（除外分を除く）：<b>${yen(totalKept)}</b></p>
+    <table><tr><th>資産</th><th>今→目標</th><th>下げ</th><th>今月買う</th><th>目安</th></tr>${rows}</table>
+    <p class="sub">★ ${exNote}<b>まず4:4:2の比率に近づけることを優先</b>します。目標に大きく足りない資産は、高値圏でも多めに配分されます（今のオルカンがこれ）。比率がそろってくると「安い資産ほど多め」の調整が主役になります。合計 ${yen(amount)}。すべてNISA成長枠で。個別株は1株から（S株/かぶミニ）。1株に満たない分は翌月にまとめてOK。</p>`;
+}
+
+function cryptoTier(dd){
+  if (dd >= -10) return ["高値圏", "#d9892a", "高値に近い。新規は特に慎重に。"];
+  if (dd >= -25) return ["中間", "#3a7bbf", "中間的な水準。買うなら少額に。"];
+  if (dd >= -45) return ["安値圏", "#2e9e4f", "大きく下落。ただし“安い”からさらに半値もあり得ます。"];
+  return ["大幅安", "#1d7a3a", "暴落水準。ゼロ近くまで落ちるリスクもある。逆張りは超ハイリスク。"];
+}
 function renderCrypto(crypto){
   const area = document.getElementById("crypto-area");
   if (!crypto.length){ area.innerHTML = '<p class="err">暗号資産のデータがありません。</p>'; return; }
@@ -193,88 +244,18 @@ function renderCrypto(crypto){
     <div class="card" style="flex-basis:100%">
       <h3>${c.name} <span class="tk">${c.code}/JPY</span></h3>
       <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px">
-        <span class="price" style="font-size:22px">${yen(c.price)}</span>
-        <span class="dd" style="color:${color};font-size:15px">1年高値から ${c.drawdown}%</span>
+        <span class="price">${yen(c.price)}</span>
+        <span class="dd" style="color:${color};font-size:14px">1年高値から ${c.drawdown}%</span>
       </div>
       <div class="badge" style="background:${color}">${label}</div>
       <p class="advice">${msg}</p>
-      <p class="sub">25日平均より ${c.vs_ma > 0 ? "+" : ""}${c.vs_ma}%　直近7日 ${c.ret7 > 0 ? "+" : ""}${c.ret7}%　1年高値 ${yen(c.high1y)}
-      <a href="https://finance.yahoo.co.jp/quote/${c.code}-JPY" target="_blank">チャートを見る</a></p>
+      <p class="sub">25日平均より ${c.vs_ma>0?"+":""}${c.vs_ma}%　直近7日 ${c.ret7>0?"+":""}${c.ret7}%
+      <a href="https://finance.yahoo.co.jp/quote/${c.code}-JPY" target="_blank">チャート</a></p>
     </div>`;
   }
-  area.innerHTML = `<div class="cards">${cards}</div>
-    <p class="sub">💡 暗号資産は配当ゼロ・値動きが株の数倍。<b>「安値圏／大幅安」でも、そこからさらに大きく下がることが珍しくありません。</b>買うとしても少額・分割で、失っても困らない範囲に限ってください。</p>`;
+  area.innerHTML = `<div class="cards">${cards}</div>`;
 }
 
-function calc(){
-  // 入力（現在の評価額）: h2559=オルカン, h1489=高配当まとめて, h1540=金
-  const hold = { oru: numv("h2559"), kohai: numv("h1489"), kin: numv("h1540") };
-  const amount = numv("amount");
-  localStorage.setItem("h2559", hold.oru);
-  localStorage.setItem("h1489", hold.kohai);
-  localStorage.setItem("h1540", hold.kin);
-  localStorage.setItem("amount", amount);
-
-  const div = window.DIVDATA || [];
-  const total = hold.oru + hold.kohai + hold.kin;
-  const after = total + amount;
-  const target = { oru: 0.40, kohai: 0.40, kin: 0.20 };
-  const ddKohai = div.length ? div.reduce((s,d)=>s+d.drawdown,0)/div.length : 0;
-  const groups = [
-    { key:"oru",   name:"オルカン（全世界株）", hold:hold.oru,   dd:assetDD("2559.T") },
-    { key:"kohai", name:"高配当株（合計）",     hold:hold.kohai, dd:ddKohai },
-    { key:"kin",   name:"金（ゴールド）",       hold:hold.kin,   dd:assetDD("1540.T") },
-  ];
-  // 不足している資産に配分（4:4:2へ寄せる）＋安い資産ほど少し多め（株価で微調整）
-  let need = {}, s = 0;
-  for (const g of groups){ let nd = Math.max(0, after*target[g.key] - g.hold) * divTier(g.dd)[2]; need[g.key]=nd; s+=nd; }
-  const buy = {};
-  for (const g of groups){ buy[g.key] = s>0 ? amount*need[g.key]/s : amount*target[g.key]; }
-
-  let rows = "";
-  for (const g of groups){
-    const [label,color] = divTier(g.dd);
-    const pct = total>0 ? (g.hold/total*100).toFixed(0)+"%" : "—";
-    rows += `<tr><td><b>${g.name}</b></td><td class="num">${pct}→${Math.round(target[g.key]*100)}%</td>
-      <td class="num" style="color:${color}">${g.dd.toFixed(1)}%</td>
-      <td class="buy">${yen(buy[g.key])}</td></tr>`;
-  }
-
-  // 高配当ぶんを5銘柄へ（安い銘柄ほど多め）
-  let sub = "";
-  if (div.length && buy.kohai > 0){
-    const w = div.map(d => divTier(d.drawdown)[2]);
-    const sw = w.reduce((a,b)=>a+b,0);
-    for (let i=0;i<div.length;i++){
-      const d = div[i];
-      const b = sw>0 ? buy.kohai*w[i]/sw : 0;
-      const sh = Math.floor(b / d.price);
-      const [lab,col] = divTier(d.drawdown);
-      sub += `<tr><td style="padding-left:16px;">${d.name} <span class="tk">${d.code}</span></td>
-        <td class="num" style="color:${col}">${d.drawdown}%</td>
-        <td class="buy">${yen(b)}</td>
-        <td class="num">${sh>=1 ? "約"+sh+"株" : "繰越"}</td></tr>`;
-    }
-    sub = `<p class="sub" style="margin-top:10px;">高配当 ${yen(buy.kohai)} の内訳（安い銘柄ほど多め）：</p>
-      <table><tr><th>銘柄</th><th>高値から</th><th>金額</th><th>目安</th></tr>${sub}</table>`;
-  }
-
-  const el = document.getElementById("reb-result");
-  el.style.display = "block";
-  el.innerHTML = `
-    <p>今の合計評価額：<b>${yen(total)}</b></p>
-    <table><tr><th>資産</th><th>今の比率→目標</th><th>今の下げ</th><th>今月これだけ買う</th></tr>${rows}</table>
-    ${sub}
-    <p class="sub">★ 4:4:2を基本に、<b>安くなっている資産へ少し多め</b>に配分しています（今月の合計 ${yen(amount)}）。すべてNISA成長枠で。高配当株は1株から（S株/かぶミニ）、配当を非課税にするには「株式数比例配分方式」。1株に満たない分は翌月にまとめてOK。</p>`;
-}
-
-// 保存済みの保有額・今月の金額を復元
-for (const code of ["1489","2559","1540"]){
-  const v = localStorage.getItem("h"+code);
-  if (v !== null) document.getElementById("h"+code).value = v;
-}
-const savedAmount = localStorage.getItem("amount");
-if (savedAmount !== null) document.getElementById("amount").value = savedAmount;
 load();
 </script>
 </body></html>

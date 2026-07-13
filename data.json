@@ -1,5 +1,5 @@
 {
- "updated": "2026-07-14 04:09",
+ "updated": "2026-07-14 06:43",
  "plan": [
   {
    "code": "2559",
@@ -25,10 +25,10 @@
   },
   {
    "code": "9432",
-   "price": 147.6,
+   "price": 149.1,
    "high1y": 160.0,
-   "drawdown": -7.8,
-   "yield_pct": 3.59,
+   "drawdown": -6.8,
+   "yield_pct": 3.55,
    "adjusted": false,
    "days_since_jump": null,
    "name": "NTT",
@@ -36,10 +36,10 @@
   },
   {
    "code": "8058",
-   "price": 4409.0,
+   "price": 4440.0,
    "high1y": 5882.0,
-   "drawdown": -25.0,
-   "yield_pct": 2.49,
+   "drawdown": -24.5,
+   "yield_pct": 2.48,
    "adjusted": false,
    "days_since_jump": null,
    "name": "三菱商事",
@@ -47,10 +47,10 @@
   },
   {
    "code": "8766",
-   "price": 7609.0,
+   "price": 7613.0,
    "high1y": 7949.0,
-   "drawdown": -4.3,
-   "yield_pct": 2.87,
+   "drawdown": -4.2,
+   "yield_pct": 2.86,
    "adjusted": false,
    "days_since_jump": null,
    "name": "東京海上",

@@ -1,23 +1,23 @@
 {
- "updated": "2026-07-22 06:52",
+ "updated": "2026-07-22 10:23",
  "plan": [
   {
    "code": "2559",
-   "price": 2970.0,
+   "price": 3000.0,
    "high1y": 3002.0,
-   "drawdown": -1.1,
+   "drawdown": -0.1,
    "yield_pct": null,
    "adjusted": true,
-   "days_since_jump": 30,
+   "days_since_jump": 31,
    "name": "オルカン（全世界株）",
    "target": 0.4
   },
   {
    "code": "1489",
-   "price": 3380.0,
-   "high1y": 3380.0,
+   "price": 3392.0,
+   "high1y": 3392.0,
    "drawdown": 0.0,
-   "yield_pct": 2.78,
+   "yield_pct": 2.77,
    "adjusted": false,
    "days_since_jump": null,
    "name": "日経高配当株50 ETF",
@@ -25,10 +25,10 @@
   },
   {
    "code": "9432",
-   "price": 151.7,
+   "price": 150.2,
    "high1y": 160.0,
-   "drawdown": -5.2,
-   "yield_pct": 3.49,
+   "drawdown": -6.1,
+   "yield_pct": 3.53,
    "adjusted": false,
    "days_since_jump": null,
    "name": "NTT",
@@ -36,10 +36,10 @@
   },
   {
    "code": "8058",
-   "price": 4664.0,
+   "price": 4877.0,
    "high1y": 5882.0,
-   "drawdown": -20.7,
-   "yield_pct": 2.36,
+   "drawdown": -17.1,
+   "yield_pct": 2.26,
    "adjusted": false,
    "days_since_jump": null,
    "name": "三菱商事",
@@ -47,10 +47,10 @@
   },
   {
    "code": "8766",
-   "price": 7874.0,
+   "price": 7895.0,
    "high1y": 7949.0,
-   "drawdown": -0.9,
-   "yield_pct": 2.77,
+   "drawdown": -0.7,
+   "yield_pct": 2.76,
    "adjusted": false,
    "days_since_jump": null,
    "name": "東京海上",
@@ -58,9 +58,9 @@
   },
   {
    "code": "1540",
-   "price": 19870.0,
+   "price": 20165.0,
    "high1y": 26500.0,
-   "drawdown": -25.0,
+   "drawdown": -23.9,
    "yield_pct": null,
    "adjusted": false,
    "days_since_jump": null,
@@ -72,20 +72,20 @@
   {
    "code": "BTC",
    "name": "ビットコイン",
-   "price": 10822527,
+   "price": 10833446,
    "high1y": 18838562,
-   "drawdown": -42.6,
-   "vs_ma": 6.0,
-   "ret7": 2.7
+   "drawdown": -42.5,
+   "vs_ma": 6.1,
+   "ret7": 2.8
   },
   {
    "code": "ETH",
    "name": "イーサリアム",
-   "price": 313927,
+   "price": 315169,
    "high1y": 710063,
-   "drawdown": -55.8,
-   "vs_ma": 9.4,
-   "ret7": 2.4
+   "drawdown": -55.6,
+   "vs_ma": 9.8,
+   "ret7": 2.8
   }
  ]
 }

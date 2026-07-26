@@ -1,5 +1,5 @@
 {
- "updated": "2026-07-26 14:49",
+ "updated": "2026-07-26 17:04",
  "plan": [
   {
    "code": "2559",
@@ -72,20 +72,20 @@
   {
    "code": "BTC",
    "name": "ビットコイン",
-   "price": 10553212,
+   "price": 10537546,
    "high1y": 18838562,
-   "drawdown": -44.0,
-   "vs_ma": 1.8,
-   "ret7": 0.3
+   "drawdown": -44.1,
+   "vs_ma": 1.4,
+   "ret7": 0.2
   },
   {
    "code": "ETH",
    "name": "イーサリアム",
-   "price": 308659,
+   "price": 307953,
    "high1y": 710063,
-   "drawdown": -56.5,
-   "vs_ma": 4.5,
-   "ret7": 2.1
+   "drawdown": -56.6,
+   "vs_ma": 3.6,
+   "ret7": 1.2
   }
  ]
 }

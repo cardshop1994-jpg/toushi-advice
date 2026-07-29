@@ -1,11 +1,11 @@
 {
- "updated": "2026-07-29 14:41",
+ "updated": "2026-07-29 17:16",
  "plan": [
   {
    "code": "2559",
-   "price": 2960.0,
+   "price": 2962.0,
    "high1y": 3002.0,
-   "drawdown": -1.4,
+   "drawdown": -1.3,
    "yield_pct": null,
    "adjusted": true,
    "days_since_jump": 36,
@@ -14,10 +14,10 @@
   },
   {
    "code": "1489",
-   "price": 3519.0,
-   "high1y": 3519.0,
+   "price": 3556.0,
+   "high1y": 3556.0,
    "drawdown": 0.0,
-   "yield_pct": 2.67,
+   "yield_pct": 2.64,
    "adjusted": false,
    "days_since_jump": null,
    "name": "日経高配当株50 ETF",
@@ -25,10 +25,10 @@
   },
   {
    "code": "9432",
-   "price": 159.7,
-   "high1y": 160.0,
-   "drawdown": -0.2,
-   "yield_pct": 3.32,
+   "price": 160.3,
+   "high1y": 160.3,
+   "drawdown": 0.0,
+   "yield_pct": 3.31,
    "adjusted": false,
    "days_since_jump": null,
    "name": "NTT",
@@ -36,10 +36,10 @@
   },
   {
    "code": "8058",
-   "price": 4810.0,
+   "price": 4819.0,
    "high1y": 5882.0,
-   "drawdown": -18.2,
-   "yield_pct": 2.29,
+   "drawdown": -18.1,
+   "yield_pct": 2.28,
    "adjusted": false,
    "days_since_jump": null,
    "name": "三菱商事",
@@ -47,10 +47,10 @@
   },
   {
    "code": "8766",
-   "price": 8423.0,
-   "high1y": 8423.0,
+   "price": 8393.0,
+   "high1y": 8393.0,
    "drawdown": 0.0,
-   "yield_pct": 2.59,
+   "yield_pct": 2.6,
    "adjusted": false,
    "days_since_jump": null,
    "name": "東京海上",
@@ -58,9 +58,9 @@
   },
   {
    "code": "1540",
-   "price": 19775.0,
+   "price": 19860.0,
    "high1y": 26500.0,
-   "drawdown": -25.4,
+   "drawdown": -25.1,
    "yield_pct": null,
    "adjusted": false,
    "days_since_jump": null,
@@ -72,20 +72,20 @@
   {
    "code": "BTC",
    "name": "ビットコイン",
-   "price": 10449849,
+   "price": 10524231,
    "high1y": 18838562,
-   "drawdown": -44.5,
-   "vs_ma": 0.1,
-   "ret7": -3.7
+   "drawdown": -44.1,
+   "vs_ma": 0.7,
+   "ret7": -2.4
   },
   {
    "code": "ETH",
    "name": "イーサリアム",
-   "price": 312179,
+   "price": 313047,
    "high1y": 710063,
-   "drawdown": -56.0,
-   "vs_ma": 4.0,
-   "ret7": -0.8
+   "drawdown": -55.9,
+   "vs_ma": 3.9,
+   "ret7": -0.7
   }
  ]
 }

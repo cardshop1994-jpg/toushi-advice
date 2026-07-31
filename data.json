@@ -1,9 +1,9 @@
 {
- "updated": "2026-07-31 10:43",
+ "updated": "2026-07-31 14:54",
  "plan": [
   {
    "code": "2559",
-   "price": 2957.0,
+   "price": 2958.0,
    "high1y": 3002.0,
    "drawdown": -1.5,
    "yield_pct": null,
@@ -14,10 +14,10 @@
   },
   {
    "code": "1489",
-   "price": 3468.0,
+   "price": 3441.0,
    "high1y": 3556.0,
-   "drawdown": -2.5,
-   "yield_pct": 2.71,
+   "drawdown": -3.2,
+   "yield_pct": 2.73,
    "adjusted": false,
    "days_since_jump": null,
    "name": "日経高配当株50 ETF",
@@ -25,10 +25,10 @@
   },
   {
    "code": "9432",
-   "price": 153.2,
+   "price": 152.4,
    "high1y": 160.3,
-   "drawdown": -4.4,
-   "yield_pct": 3.46,
+   "drawdown": -4.9,
+   "yield_pct": 3.48,
    "adjusted": false,
    "days_since_jump": null,
    "name": "NTT",
@@ -36,10 +36,10 @@
   },
   {
    "code": "8058",
-   "price": 4824.0,
+   "price": 4808.0,
    "high1y": 5882.0,
-   "drawdown": -18.0,
-   "yield_pct": 2.28,
+   "drawdown": -18.3,
+   "yield_pct": 2.29,
    "adjusted": false,
    "days_since_jump": null,
    "name": "三菱商事",
@@ -47,10 +47,10 @@
   },
   {
    "code": "8766",
-   "price": 8202.0,
+   "price": 8131.0,
    "high1y": 8393.0,
-   "drawdown": -2.3,
-   "yield_pct": 2.66,
+   "drawdown": -3.1,
+   "yield_pct": 2.68,
    "adjusted": false,
    "days_since_jump": null,
    "name": "東京海上",
@@ -58,9 +58,9 @@
   },
   {
    "code": "1540",
-   "price": 19730.0,
+   "price": 19720.0,
    "high1y": 26500.0,
-   "drawdown": -25.5,
+   "drawdown": -25.6,
    "yield_pct": null,
    "adjusted": false,
    "days_since_jump": null,
@@ -72,20 +72,20 @@
   {
    "code": "BTC",
    "name": "ビットコイン",
-   "price": 10416320,
+   "price": 10322187,
    "high1y": 18838562,
-   "drawdown": -44.7,
-   "vs_ma": -0.4,
-   "ret7": -2.3
+   "drawdown": -45.2,
+   "vs_ma": -1.2,
+   "ret7": -3.1
   },
   {
    "code": "ETH",
    "name": "イーサリアム",
-   "price": 308252,
+   "price": 305471,
    "high1y": 710063,
-   "drawdown": -56.6,
-   "vs_ma": 2.0,
-   "ret7": 0.2
+   "drawdown": -57.0,
+   "vs_ma": 1.2,
+   "ret7": -0.7
   }
  ]
 }

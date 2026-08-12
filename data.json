@@ -1,23 +1,23 @@
 {
- "updated": "2026-08-12 06:33",
+ "updated": "2026-08-12 09:57",
  "plan": [
   {
    "code": "2559",
-   "price": 3007.0,
-   "high1y": 3007.0,
+   "price": 3011.0,
+   "high1y": 3011.0,
    "drawdown": 0.0,
    "yield_pct": null,
    "adjusted": true,
-   "days_since_jump": 44,
+   "days_since_jump": 45,
    "name": "オルカン（全世界株）",
    "target": 0.4
   },
   {
    "code": "1489",
-   "price": 3507.0,
+   "price": 3515.0,
    "high1y": 3556.0,
-   "drawdown": -1.4,
-   "yield_pct": 2.68,
+   "drawdown": -1.2,
+   "yield_pct": 2.67,
    "adjusted": false,
    "days_since_jump": null,
    "name": "日経高配当株50 ETF",
@@ -36,10 +36,10 @@
   },
   {
    "code": "8058",
-   "price": 4849.0,
+   "price": 4859.0,
    "high1y": 5882.0,
-   "drawdown": -17.6,
-   "yield_pct": 2.27,
+   "drawdown": -17.4,
+   "yield_pct": 2.26,
    "adjusted": false,
    "days_since_jump": null,
    "name": "三菱商事",
@@ -47,10 +47,10 @@
   },
   {
    "code": "8766",
-   "price": 7752.0,
+   "price": 7793.0,
    "high1y": 8393.0,
-   "drawdown": -7.6,
-   "yield_pct": 2.81,
+   "drawdown": -7.1,
+   "yield_pct": 2.8,
    "adjusted": false,
    "days_since_jump": null,
    "name": "東京海上",
@@ -58,9 +58,9 @@
   },
   {
    "code": "1540",
-   "price": 20715.0,
+   "price": 21010.0,
    "high1y": 26500.0,
-   "drawdown": -21.8,
+   "drawdown": -20.7,
    "yield_pct": null,
    "adjusted": false,
    "days_since_jump": null,
@@ -72,20 +72,20 @@
   {
    "code": "BTC",
    "name": "ビットコイン",
-   "price": 10131277,
+   "price": 10147622,
    "high1y": 18838562,
-   "drawdown": -46.2,
-   "vs_ma": -2.1,
-   "ret7": 0.3
+   "drawdown": -46.1,
+   "vs_ma": -1.9,
+   "ret7": 0.5
   },
   {
    "code": "ETH",
    "name": "イーサリアム",
-   "price": 299404,
+   "price": 299781,
    "high1y": 710063,
    "drawdown": -57.8,
-   "vs_ma": -1.5,
-   "ret7": 1.6
+   "vs_ma": -1.4,
+   "ret7": 1.7
   }
  ]
 }

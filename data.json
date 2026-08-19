@@ -1,11 +1,11 @@
 {
- "updated": "2026-08-19 12:36",
+ "updated": "2026-08-19 15:23",
  "plan": [
   {
    "code": "2559",
-   "price": 2998.0,
+   "price": 2993.0,
    "high1y": 3047.0,
-   "drawdown": -1.6,
+   "drawdown": -1.8,
    "yield_pct": null,
    "adjusted": true,
    "days_since_jump": 50,
@@ -14,10 +14,10 @@
   },
   {
    "code": "1489",
-   "price": 3466.0,
+   "price": 3457.0,
    "high1y": 3556.0,
-   "drawdown": -2.5,
-   "yield_pct": 2.71,
+   "drawdown": -2.8,
+   "yield_pct": 2.72,
    "adjusted": false,
    "days_since_jump": null,
    "name": "日経高配当株50 ETF",
@@ -36,10 +36,10 @@
   },
   {
    "code": "8058",
-   "price": 4677.0,
+   "price": 4631.0,
    "high1y": 5882.0,
-   "drawdown": -20.5,
-   "yield_pct": 2.35,
+   "drawdown": -21.3,
+   "yield_pct": 2.38,
    "adjusted": false,
    "days_since_jump": null,
    "name": "三菱商事",
@@ -47,9 +47,9 @@
   },
   {
    "code": "8766",
-   "price": 7213.0,
+   "price": 7224.0,
    "high1y": 8393.0,
-   "drawdown": -14.1,
+   "drawdown": -13.9,
    "yield_pct": 3.02,
    "adjusted": false,
    "days_since_jump": null,
@@ -58,9 +58,9 @@
   },
   {
    "code": "1540",
-   "price": 20860.0,
+   "price": 20705.0,
    "high1y": 26500.0,
-   "drawdown": -21.3,
+   "drawdown": -21.9,
    "yield_pct": null,
    "adjusted": false,
    "days_since_jump": null,
@@ -72,20 +72,20 @@
   {
    "code": "BTC",
    "name": "ビットコイン",
-   "price": 10250217,
+   "price": 10220220,
    "high1y": 18838562,
-   "drawdown": -45.6,
-   "vs_ma": 0.5,
-   "ret7": 1.3
+   "drawdown": -45.7,
+   "vs_ma": 0.2,
+   "ret7": 1.0
   },
   {
    "code": "ETH",
    "name": "イーサリアム",
-   "price": 304525,
+   "price": 303965,
    "high1y": 710063,
-   "drawdown": -57.1,
-   "vs_ma": 0.9,
-   "ret7": 1.6
+   "drawdown": -57.2,
+   "vs_ma": 0.7,
+   "ret7": 1.4
   }
  ]
 }

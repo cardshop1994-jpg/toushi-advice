@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-25 00:27",
+ "updated": "2026-08-25 03:22",
  "plan": [
   {
    "code": "2559",
@@ -14,10 +14,10 @@
   },
   {
    "code": "1489",
-   "price": 3550.0,
-   "high1y": 3556.0,
-   "drawdown": -0.2,
-   "yield_pct": 2.65,
+   "price": 3561.0,
+   "high1y": 3561.0,
+   "drawdown": 0.0,
+   "yield_pct": 2.64,
    "adjusted": false,
    "days_since_jump": null,
    "name": "日経高配当株50 ETF",
@@ -72,20 +72,20 @@
   {
    "code": "BTC",
    "name": "ビットコイン",
-   "price": 12715522,
+   "price": 12570235,
    "high1y": 18838562,
-   "drawdown": -32.5,
-   "vs_ma": 20.2,
-   "ret7": 23.7
+   "drawdown": -33.3,
+   "vs_ma": 18.9,
+   "ret7": 22.3
   },
   {
    "code": "ETH",
    "name": "イーサリアム",
-   "price": 402900,
+   "price": 394737,
    "high1y": 704870,
-   "drawdown": -42.8,
-   "vs_ma": 26.1,
-   "ret7": 32.2
+   "drawdown": -44.0,
+   "vs_ma": 23.7,
+   "ret7": 29.6
   }
  ]
 }

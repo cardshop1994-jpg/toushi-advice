@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-19 02:56",
+ "updated": "2026-09-19 05:13",
  "plan": [
   {
    "code": "2559",
@@ -25,10 +25,10 @@
   },
   {
    "code": "9432",
-   "price": 180.0,
+   "price": 177.3,
    "high1y": 180.0,
-   "drawdown": 0.0,
-   "yield_pct": 2.94,
+   "drawdown": -1.5,
+   "yield_pct": 2.99,
    "adjusted": false,
    "days_since_jump": null,
    "name": "NTT",
@@ -36,10 +36,10 @@
   },
   {
    "code": "8058",
-   "price": 4979.0,
+   "price": 4947.0,
    "high1y": 5882.0,
-   "drawdown": -15.4,
-   "yield_pct": 2.21,
+   "drawdown": -15.9,
+   "yield_pct": 2.22,
    "adjusted": false,
    "days_since_jump": null,
    "name": "三菱商事",
@@ -47,10 +47,10 @@
   },
   {
    "code": "8766",
-   "price": 8298.0,
+   "price": 8200.0,
    "high1y": 8393.0,
-   "drawdown": -1.1,
-   "yield_pct": 2.63,
+   "drawdown": -2.3,
+   "yield_pct": 2.66,
    "adjusted": false,
    "days_since_jump": null,
    "name": "東京海上",
@@ -72,20 +72,20 @@
   {
    "code": "BTC",
    "name": "ビットコイン",
-   "price": 12667750,
+   "price": 12703883,
    "high1y": 18838562,
-   "drawdown": -32.8,
-   "vs_ma": 3.3,
-   "ret7": 6.9
+   "drawdown": -32.6,
+   "vs_ma": 3.6,
+   "ret7": 7.2
   },
   {
    "code": "ETH",
    "name": "イーサリアム",
-   "price": 408239,
+   "price": 412438,
    "high1y": 704870,
-   "drawdown": -42.1,
-   "vs_ma": 5.4,
-   "ret7": 5.7
+   "drawdown": -41.5,
+   "vs_ma": 6.5,
+   "ret7": 6.8
   }
  ]
 }

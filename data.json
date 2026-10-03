@@ -1,23 +1,23 @@
 {
- "updated": "2026-10-03 06:31",
+ "updated": "2026-10-03 11:41",
  "plan": [
   {
    "code": "2559",
-   "price": 2972.0,
+   "price": 2950.0,
    "high1y": 3047.0,
-   "drawdown": -2.5,
+   "drawdown": -3.2,
    "yield_pct": null,
    "adjusted": true,
-   "days_since_jump": 78,
+   "days_since_jump": 79,
    "name": "オルカン（全世界株）",
    "target": 0.4
   },
   {
    "code": "1489",
-   "price": 3529.0,
+   "price": 3480.0,
    "high1y": 3651.0,
-   "drawdown": -3.3,
-   "yield_pct": 2.66,
+   "drawdown": -4.7,
+   "yield_pct": 2.7,
    "adjusted": false,
    "days_since_jump": null,
    "name": "日経高配当株50 ETF",
@@ -58,9 +58,9 @@
   },
   {
    "code": "1540",
-   "price": 19890.0,
+   "price": 19820.0,
    "high1y": 26500.0,
-   "drawdown": -24.9,
+   "drawdown": -25.2,
    "yield_pct": null,
    "adjusted": false,
    "days_since_jump": null,
@@ -72,20 +72,20 @@
   {
    "code": "BTC",
    "name": "ビットコイン",
-   "price": 13324023,
+   "price": 13360319,
    "high1y": 18838562,
-   "drawdown": -29.3,
-   "vs_ma": 5.0,
-   "ret7": 0.8
+   "drawdown": -29.1,
+   "vs_ma": 5.3,
+   "ret7": 1.1
   },
   {
    "code": "ETH",
    "name": "イーサリアム",
-   "price": 419688,
+   "price": 422896,
    "high1y": 704870,
-   "drawdown": -40.5,
-   "vs_ma": 3.3,
-   "ret7": -0.8
+   "drawdown": -40.0,
+   "vs_ma": 4.1,
+   "ret7": -0.1
   }
  ]
 }

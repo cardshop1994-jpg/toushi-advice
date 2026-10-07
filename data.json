@@ -1,11 +1,11 @@
 {
- "updated": "2026-10-07 12:06",
+ "updated": "2026-10-07 21:13",
  "plan": [
   {
    "code": "2559",
-   "price": 3001.0,
+   "price": 2994.0,
    "high1y": 3047.0,
-   "drawdown": -1.5,
+   "drawdown": -1.7,
    "yield_pct": null,
    "adjusted": true,
    "days_since_jump": 82,
@@ -14,9 +14,9 @@
   },
   {
    "code": "1489",
-   "price": 3475.0,
+   "price": 3473.0,
    "high1y": 3651.0,
-   "drawdown": -4.8,
+   "drawdown": -4.9,
    "yield_pct": 1.58,
    "adjusted": false,
    "days_since_jump": null,
@@ -25,10 +25,10 @@
   },
   {
    "code": "9432",
-   "price": 170.0,
+   "price": 172.1,
    "high1y": 177.2,
-   "drawdown": -4.1,
-   "yield_pct": 3.15,
+   "drawdown": -2.9,
+   "yield_pct": 3.11,
    "adjusted": false,
    "days_since_jump": null,
    "name": "NTT",
@@ -36,9 +36,9 @@
   },
   {
    "code": "8058",
-   "price": 4682.0,
+   "price": 4676.0,
    "high1y": 5806.3,
-   "drawdown": -19.4,
+   "drawdown": -19.5,
    "yield_pct": 2.5,
    "adjusted": false,
    "days_since_jump": null,
@@ -47,10 +47,10 @@
   },
   {
    "code": "8766",
-   "price": 519.7,
+   "price": 516.0,
    "high1y": 537.5,
-   "drawdown": -3.3,
-   "yield_pct": 25.01,
+   "drawdown": -4.0,
+   "yield_pct": 25.19,
    "adjusted": false,
    "days_since_jump": null,
    "name": "東京海上",
@@ -58,9 +58,9 @@
   },
   {
    "code": "1540",
-   "price": 19660.0,
+   "price": 19560.0,
    "high1y": 26500.0,
-   "drawdown": -25.8,
+   "drawdown": -26.2,
    "yield_pct": null,
    "adjusted": false,
    "days_since_jump": null,
@@ -72,20 +72,20 @@
   {
    "code": "BTC",
    "name": "ビットコイン",
-   "price": 13318256,
+   "price": 13223734,
    "high1y": 18838562,
-   "drawdown": -29.3,
-   "vs_ma": 3.0,
-   "ret7": 1.2
+   "drawdown": -29.8,
+   "vs_ma": 1.8,
+   "ret7": 0.4
   },
   {
    "code": "ETH",
    "name": "イーサリアム",
-   "price": 414643,
+   "price": 407859,
    "high1y": 691455,
-   "drawdown": -40.0,
-   "vs_ma": 0.3,
-   "ret7": -1.6
+   "drawdown": -41.0,
+   "vs_ma": -1.6,
+   "ret7": -3.5
   }
  ]
 }

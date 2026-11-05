@@ -1,23 +1,23 @@
 {
- "updated": "2026-11-05 18:59",
+ "updated": "2026-11-06 04:10",
  "plan": [
   {
    "code": "2559",
-   "price": 2932.0,
+   "price": 2885.0,
    "high1y": 3047.0,
-   "drawdown": -3.8,
+   "drawdown": -5.3,
    "yield_pct": null,
    "adjusted": true,
-   "days_since_jump": 101,
+   "days_since_jump": 100,
    "name": "オルカン（全世界株）",
    "target": 0.4
   },
   {
    "code": "1489",
-   "price": 3596.0,
+   "price": 3499.0,
    "high1y": 3599.6,
-   "drawdown": -0.1,
-   "yield_pct": 2.89,
+   "drawdown": -2.8,
+   "yield_pct": 2.97,
    "adjusted": false,
    "days_since_jump": null,
    "name": "日経高配当株50 ETF",
@@ -25,10 +25,10 @@
   },
   {
    "code": "9432",
-   "price": 164.9,
+   "price": 164.0,
    "high1y": 178.1,
-   "drawdown": -7.4,
-   "yield_pct": 3.24,
+   "drawdown": -7.9,
+   "yield_pct": 3.26,
    "adjusted": false,
    "days_since_jump": null,
    "name": "NTT",
@@ -36,10 +36,10 @@
   },
   {
    "code": "8058",
-   "price": 5274.0,
+   "price": 5148.0,
    "high1y": 5806.3,
-   "drawdown": -9.2,
-   "yield_pct": 2.22,
+   "drawdown": -11.3,
+   "yield_pct": 2.27,
    "adjusted": false,
    "days_since_jump": null,
    "name": "三菱商事",
@@ -47,10 +47,10 @@
   },
   {
    "code": "8766",
-   "price": 606.0,
-   "high1y": 606.0,
-   "drawdown": 0.0,
-   "yield_pct": 21.45,
+   "price": 578.7,
+   "high1y": 584.8,
+   "drawdown": -1.0,
+   "yield_pct": 22.46,
    "adjusted": false,
    "days_since_jump": null,
    "name": "東京海上",
@@ -58,9 +58,9 @@
   },
   {
    "code": "1540",
-   "price": 19460.0,
+   "price": 18950.0,
    "high1y": 26500.0,
-   "drawdown": -26.6,
+   "drawdown": -28.5,
    "yield_pct": null,
    "adjusted": false,
    "days_since_jump": null,
@@ -72,20 +72,20 @@
   {
    "code": "BTC",
    "name": "ビットコイン",
-   "price": 12725298,
+   "price": 11962868,
    "high1y": 16339764,
-   "drawdown": -22.1,
-   "vs_ma": 0.1,
-   "ret7": 3.7
+   "drawdown": -26.8,
+   "vs_ma": -5.6,
+   "ret7": -2.5
   },
   {
    "code": "ETH",
    "name": "イーサリアム",
-   "price": 382848,
+   "price": 353856,
    "high1y": 551118,
-   "drawdown": -30.5,
-   "vs_ma": 2.4,
-   "ret7": 7.8
+   "drawdown": -35.8,
+   "vs_ma": -5.0,
+   "ret7": -0.3
   }
  ]
 }

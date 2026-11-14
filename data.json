@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-14 12:53",
+ "updated": "2026-11-14 21:39",
  "plan": [
   {
    "code": "2559",
@@ -50,7 +50,7 @@
    "price": 597.1,
    "high1y": 606.0,
    "drawdown": -1.5,
-   "yield_pct": 21.77,
+   "yield_pct": 2.62,
    "adjusted": false,
    "days_since_jump": null,
    "name": "東京海上",
@@ -72,20 +72,20 @@
   {
    "code": "BTC",
    "name": "ビットコイン",
-   "price": 10691387,
+   "price": 10729442,
    "high1y": 15356278,
-   "drawdown": -30.4,
-   "vs_ma": -12.8,
-   "ret7": -10.9
+   "drawdown": -30.1,
+   "vs_ma": -11.9,
+   "ret7": -10.6
   },
   {
    "code": "ETH",
    "name": "イーサリアム",
-   "price": 301831,
+   "price": 304499,
    "high1y": 531481,
-   "drawdown": -43.2,
-   "vs_ma": -15.2,
-   "ret7": -14.8
+   "drawdown": -42.7,
+   "vs_ma": -13.7,
+   "ret7": -14.1
   }
  ]
 }

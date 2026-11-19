@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-19 11:05",
+ "updated": "2026-11-19 19:51",
  "plan": [
   {
    "code": "2559",
-   "price": 2829.0,
+   "price": 2840.0,
    "high1y": 3047.0,
-   "drawdown": -7.2,
+   "drawdown": -6.8,
    "yield_pct": null,
    "adjusted": true,
    "days_since_jump": 111,
@@ -14,9 +14,9 @@
   },
   {
    "code": "1489",
-   "price": 3479.0,
+   "price": 3474.0,
    "high1y": 3599.6,
-   "drawdown": -3.4,
+   "drawdown": -3.5,
    "yield_pct": 2.99,
    "adjusted": false,
    "days_since_jump": null,
@@ -25,10 +25,10 @@
   },
   {
    "code": "9432",
-   "price": 170.3,
+   "price": 168.9,
    "high1y": 178.1,
-   "drawdown": -4.4,
-   "yield_pct": 3.14,
+   "drawdown": -5.2,
+   "yield_pct": 3.17,
    "adjusted": false,
    "days_since_jump": null,
    "name": "NTT",
@@ -36,9 +36,9 @@
   },
   {
    "code": "8058",
-   "price": 4964.0,
+   "price": 4951.0,
    "high1y": 5806.3,
-   "drawdown": -14.5,
+   "drawdown": -14.7,
    "yield_pct": 2.36,
    "adjusted": false,
    "days_since_jump": null,
@@ -47,10 +47,10 @@
   },
   {
    "code": "8766",
-   "price": 569.7,
+   "price": 566.0,
    "high1y": 606.0,
-   "drawdown": -6.0,
-   "yield_pct": 2.75,
+   "drawdown": -6.6,
+   "yield_pct": 2.77,
    "adjusted": false,
    "days_since_jump": null,
    "name": "東京海上",
@@ -58,9 +58,9 @@
   },
   {
    "code": "1540",
-   "price": 17925.0,
+   "price": 17785.0,
    "high1y": 26500.0,
-   "drawdown": -32.4,
+   "drawdown": -32.9,
    "yield_pct": null,
    "adjusted": false,
    "days_since_jump": null,
@@ -72,20 +72,20 @@
   {
    "code": "BTC",
    "name": "ビットコイン",
-   "price": 9992314,
+   "price": 10204560,
    "high1y": 15356278,
-   "drawdown": -34.9,
-   "vs_ma": -14.9,
-   "ret7": -15.4
+   "drawdown": -33.5,
+   "vs_ma": -12.4,
+   "ret7": -10.5
   },
   {
    "code": "ETH",
    "name": "イーサリアム",
-   "price": 282802,
+   "price": 288659,
    "high1y": 531481,
-   "drawdown": -46.8,
-   "vs_ma": -16.3,
-   "ret7": -13.9
+   "drawdown": -45.7,
+   "vs_ma": -13.8,
+   "ret7": -10.5
   }
  ]
 }
